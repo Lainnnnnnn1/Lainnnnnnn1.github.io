@@ -1,0 +1,8 @@
+name = "obsidian-blog-auth"
+main = "src/index.ts"
+compatibility_date = "2026-06-13"
+workers_dev = true
+
+# 环境变量（需要在 Cloudflare Dashboard 中设置）
+# AUTH_USER: 登录用户名
+# AUTH_PASS: 登录密码

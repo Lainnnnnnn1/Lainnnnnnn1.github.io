@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: zh-CN
-  baseUrl: quartz.jzhao.xyz
+  baseUrl: obsidian-blog-auth.huaqiangsellsmelons.workers.dev
   ignorePatterns:
     - private
     - templates
