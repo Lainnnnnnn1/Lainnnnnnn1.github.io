@@ -21,7 +21,7 @@ fi
 echo "📋 复制构建产物到根目录..."
 rsync -a --exclude='.git' public/ ./
 
-# 4. 添加所有构建产物文件（包括 static/、tags/、mathematics/ 等）
+# 4. 添加所有变更（构建产物 + 源文件）
 echo "📝 提交到 Git..."
 git add -A 2>/dev/null || true
 
