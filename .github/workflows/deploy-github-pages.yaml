@@ -26,6 +26,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Prepare artifact
+        run: |
+          # 只保留构建产物，删除源码文件以减少 artifact 大小
+          rm -rf node_modules quartz .quartz content docs cloudflare-worker
+          rm -f *.ts *.tsx *.json *.yaml Dockerfile globals.d.ts index.d.ts tsconfig.json
+          rm -f .prettier* .npmrc .node-version .gitattributes CODE_OF_CONDUCT.md LICENSE.txt README.md quartz.config.default.yaml
+          ls -la
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
