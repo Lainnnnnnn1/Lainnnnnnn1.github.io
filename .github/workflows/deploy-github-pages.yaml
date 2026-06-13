@@ -28,11 +28,15 @@ jobs:
 
       - name: Prepare artifact
         run: |
-          # 只保留构建产物，删除源码文件以减少 artifact 大小
+          # 只保留构建产物（HTML/CSS/JS/static/等），删除源码文件以减少 artifact 大小
           rm -rf node_modules quartz .quartz content docs cloudflare-worker
           rm -f *.ts *.tsx *.json *.yaml Dockerfile globals.d.ts index.d.ts tsconfig.json
           rm -f .prettier* .npmrc .node-version .gitattributes CODE_OF_CONDUCT.md LICENSE.txt README.md quartz.config.default.yaml
-          ls -la
+          # 确保构建产物目录存在
+          echo "=== 保留的文件 ==="
+          ls -d */ 2>/dev/null || true
+          echo "=== 根目录文件 ==="
+          ls -f *.html *.css *.js *.xml *.png *.svg *.ico *.pdf 2>/dev/null || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

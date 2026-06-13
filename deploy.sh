@@ -21,9 +21,9 @@ fi
 echo "📋 复制构建产物到根目录..."
 rsync -a --exclude='.git' public/ ./
 
-# 4. 添加构建产物文件
+# 4. 添加所有构建产物文件（包括 static/、tags/、mathematics/ 等）
 echo "📝 提交到 Git..."
-git add index.html *.html *.css *.js assets/ static/ favicon.ico *.xml *.svg *.png *.webp CNAME 2>/dev/null || true
+git add -A 2>/dev/null || true
 
 # 5. 提交并推送
 git commit -m "deploy: 自动部署博客 $(date '+%Y-%m-%d %H:%M')" || echo "ℹ️ 没有新的更改需要提交"
