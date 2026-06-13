@@ -27,12 +27,9 @@ jobs:
       - name: Remove content symlink
         run: rm -f content
 
-      - name: Checkout Obsidian Vault
-        uses: actions/checkout@v6
-        with:
-          repository: Lainnnnnnn1/obsidian-vault
-          path: content
-          fetch-depth: 1
+      - name: Clone Obsidian Vault
+        run: |
+          git clone https://github.com/Lainnnnnnn1/obsidian-vault.git content --depth 1
 
       - name: Setup Node
         uses: actions/setup-node@v6
