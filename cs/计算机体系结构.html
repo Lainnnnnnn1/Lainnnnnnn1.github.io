@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>计算机体系结构</title><meta charset="utf-8"/><link rel="preload" href="../index-bb6c1746.css" as="style"/><link rel="preload" href="../prescript-2bfc6315.js" as="script"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="知识库"/><meta property="og:title" content="计算机体系结构"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="计算机体系结构"/><meta name="twitter:description" content="计算机体系结构 Computer Architecture 人话讲解 计算机体系结构 = 计算机硬件怎么设计的。从晶体管到 CPU 到内存到总线——这一层决定了软件能跑多快的根本上限。 写 C 和写 Python 的人都需要理解缓存——因为 cache miss 的性能惩罚能差 100 倍。 「The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise.」— Edsger Dijkstra 冯·诺依曼架构 Von ..."/><meta property="og:description" content="计算机体系结构 Computer Architecture 人话讲解 计算机体系结构 = 计算机硬件怎么设计的。从晶体管到 CPU 到内存到总线——这一层决定了软件能跑多快的根本上限。 写 C 和写 Python 的人都需要理解缓存——因为 cache miss 的性能惩罚能差 100 倍。 「The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise.」— Edsger Dijkstra 冯·诺依曼架构 Von ..."/><meta property="og:image:alt" content="计算机体系结构 Computer Architecture 人话讲解 计算机体系结构 = 计算机硬件怎么设计的。从晶体管到 CPU 到内存到总线——这一层决定了软件能跑多快的根本上限。 写 C 和写 Python 的人都需要理解缓存——因为 cache miss 的性能惩罚能差 100 倍。 「The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise.」— Edsger Dijkstra 冯·诺依曼架构 Von ..."/><meta property="og:image" content="https://Lainnnnnnn1.github.io/static/og-image.png"/><meta property="og:image:url" content="https://Lainnnnnnn1.github.io/static/og-image.png"/><meta name="twitter:image" content="https://Lainnnnnnn1.github.io/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="Lainnnnnnn1.github.io"/><meta property="og:url" content="https://lainnnnnnn1.github.io/cs/计算机体系结构"/><meta property="twitter:url" content="https://lainnnnnnn1.github.io/cs/计算机体系结构"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="计算机体系结构 Computer Architecture 人话讲解 计算机体系结构 = 计算机硬件怎么设计的。从晶体管到 CPU 到内存到总线——这一层决定了软件能跑多快的根本上限。 写 C 和写 Python 的人都需要理解缓存——因为 cache miss 的性能惩罚能差 100 倍。 「The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise.」— Edsger Dijkstra 冯·诺依曼架构 Von ..."/><meta name="generator" content="Quartz"/><link href="../index-bb6c1746.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-735924e0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-589c1cea.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-bbc3f7c0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-2911f5d1.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-e427079e.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-53b25b2b.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-c93c6a44.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-8a06014f.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-77d6a441.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-6ee21cee.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-1ea6ad18.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-34bdfded.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-788c9ca3.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-642859cd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-4abc06bd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-274a3dfe.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-94cb6c84.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-58d5ff56.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-7262b5a7.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../static/resource-style-a5c806d2.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../static/resource-style-6bd36952.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../static/resource-style-9857b007.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../static/resource-style-d3a1a224.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript-2bfc6315.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted%20Grotesk%3Awght%40400%3B700&amp;family=Source%20Sans%20Pro%3Aital%2Cwght%400%2C400%3B0%2C600%3B1%2C400%3B1%2C600&amp;family=IBM%20Plex%20Mono%3Awght%40400%3B600&amp;display=swap"/></head><body data-slug="cs/计算机体系结构" data-basepath><div id="quartz-root" class="page" data-frame="default"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">知识库</a></h2><div class="mobile-only"><div class="spacer"></div></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 0.5rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button" aria-label="搜索" aria-expanded="false"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索内容..." placeholder="搜索内容..."/><div class="search-layout" data-preview="true" data-field-priority="[&quot;title&quot;,&quot;content&quot;,&quot;tags&quot;]"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode" aria-label="暗色模式"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode" aria-label="阅读模式"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer nav-files-container" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a2, b2) => {\n    if (!a2.isFolder &amp;&amp; !b2.isFolder || a2.isFolder &amp;&amp; b2.isFolder) {\n      return (a2.displayName || \&quot;\&quot;).localeCompare(b2.displayName || \&quot;\&quot;, void 0, {\n        numeric: true,\n        sensitivity: \&quot;base\&quot;\n      });\n    }\n    if (!a2.isFolder &amp;&amp; b2.isFolder) {\n      return 1;\n    }\n    return -1;\n  }&quot;,&quot;filterFn&quot;:&quot;(node) => node.slugSegment !== \&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;(node) => {\n    return node;\n  }&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-45" aria-label="探索"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-45" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#" class="nav-file-title tree-item-self"></a></li></template><template id="template-folder"><li><div class="folder-container nav-folder-title tree-item-self"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon nav-folder-collapse-indicator collapse-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content tree-item-children"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../cs/">CS</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>计算机体系结构</a></div></nav><h1 class="article-title">计算机体系结构</h1><details class="note-properties metadata-container" open data-collapsed="false"><summary class="note-properties-header"><span class="note-properties-title">Properties</span><span class="note-properties-count">2</span></summary><table class="note-properties-table"><tbody><tr class="note-properties-row metadata-property"><td class="note-properties-key metadata-property-key">tags</td><td class="note-properties-value metadata-property-value"><span class="note-properties-tags"><a href="../tags/计算机体系结构" class="internal internal-link tag-link">计算机体系结构</a><span class="note-properties-separator">, </span><a href="../tags/cpu" class="internal internal-link tag-link">cpu</a><span class="note-properties-separator">, </span><a href="../tags/内存" class="internal internal-link tag-link">内存</a><span class="note-properties-separator">, </span><a href="../tags/缓存" class="internal internal-link tag-link">缓存</a><span class="note-properties-separator">, </span><a href="../tags/冯诺依曼" class="internal internal-link tag-link">冯诺依曼</a><span class="note-properties-separator">, </span><a href="../tags/流水线" class="internal internal-link tag-link">流水线</a><span class="note-properties-separator">, </span><a href="../tags/mips" class="internal internal-link tag-link">mips</a></span></td></tr><tr class="note-properties-row metadata-property"><td class="note-properties-key metadata-property-key">aliases</td><td class="note-properties-value metadata-property-value"><span class="note-properties-list"><span class="note-properties-text">Computer Architecture</span><span class="note-properties-separator">, </span><span class="note-properties-text">体系结构</span></span></td></tr></tbody></table></details><p show-comma="true" class="content-meta"><time datetime="2026-08-03T15:32:22.000Z">2026年8月03日</time><span>13分钟阅读</span></p></div></div><article class="popover-hint"><div class="markdown-preview-view markdown-rendered"><h1 id="计算机体系结构-computer-architecture">计算机体系结构 Computer Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#计算机体系结构-computer-architecture" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="人话讲解">人话讲解<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#人话讲解" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>计算机体系结构 = 计算机硬件怎么设计的。从晶体管到 CPU 到内存到总线——这一层决定了<strong>软件能跑多快</strong>的根本上限。</p>
+<p>写 C 和写 Python 的人都需要理解缓存——因为 <strong>cache miss 的性能惩罚能差 100 倍</strong>。</p>
+<blockquote>
+<p>「The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise.」— Edsger Dijkstra</p>
+</blockquote>
+<hr/>
+<h2 id="冯诺依曼架构-von-neumann-architecture">冯·诺依曼架构 Von Neumann Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#冯诺依曼架构-von-neumann-architecture" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>┌─────────────────────────────────────────────┐
+│                  CPU                         │
+│  ┌──────────┐  ┌──────────────────────────┐ │
+│  │  Control  │  │     Datapath (ALU + Reg) │ │
+│  │   Unit    │  │                          │ │
+│  └─────┬─────┘  └────────────┬─────────────┘ │
+│        │        ┌────────────┴─────┐         │
+│        └───────▶│    总线 Bus      │         │
+│                 └──────┬───────────┘         │
+└────────────────────────┼────────────────────┘
+                         │
+        ┌────────────────┼────────────────┐
+        ▼                ▼                ▼
+   ┌─────────┐    ┌──────────┐    ┌──────────┐
+   │  Memory  │    │  Input   │    │  Output  │
+   │  (RAM)   │    │  Devices │    │  Devices │
+   └─────────┘    └──────────┘    └──────────┘
+</code></pre>
+<p><strong>核心思想</strong>：程序和数据<strong>存在同一个内存</strong>里。这是今天几乎所有计算机的架构。</p>
+<p><strong>冯·诺依曼瓶颈</strong>：CPU 和内存之间的带宽限制。CPU 越来越快，内存跟不上 → <strong>内存墙</strong>。</p>
+<hr/>
+<h2 id="cpu-核心概念">CPU 核心概念<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cpu-核心概念" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="指令周期-instruction-cycle">指令周期 Instruction Cycle<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#指令周期-instruction-cycle" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>取指 Fetch → 译码 Decode → 执行 Execute → 访存 Memory → 写回 Writeback
+</code></pre>
+<h3 id="risc-vs-cisc">RISC vs CISC<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#risc-vs-cisc" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>RISC (ARM, RISC-V)</th><th>CISC (x86)</th></tr></thead><tbody><tr><td>指令长度</td><td>定长（32-bit）</td><td>变长（1~15 字节）</td></tr><tr><td>指令数量</td><td>少，简单</td><td>多，复杂</td></tr><tr><td>寻址模式</td><td>Load/Store 架构，只有 load/store 访存</td><td>可内存直接操作（add mem, reg）</td></tr><tr><td>复杂指令实现</td><td>编译器组合简单指令</td><td>微码 Microcode 解释</td></tr><tr><td>硬件</td><td>简单、省电、流水线友好</td><td>复杂、功耗高</td></tr><tr><td>代表</td><td>ARM, RISC-V, MIPS</td><td>x86, x86-64</td></tr></tbody></table></div>
+<p><strong>为什么 RISC 赢了移动时代</strong>：指令简单 → 硬件简单 → 省电；定长指令 → 取指译码简单 → 流水线深度可以拉得很高。而现代 x86 靠<strong>内部把复杂指令翻译成微操作 µops</strong> 来假装自己是 RISC——今天的 Intel/AMD 本质是「CISC 外壳 + RISC 内核」。</p>
+<h3 id="流水线-pipelining">流水线 Pipelining<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#流水线-pipelining" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>没有流水线：
+[取指|译码|执行|访存|写回] → [取指|译码|执行|访存|写回] → ...
+                      指令1                              指令2
+
+有流水线（理想）：
+取指 | 译码 | 执行 | 访存 | 写回
+     取指  | 译码  | 执行 | 访存 | 写回
+           取指  | 译码  | 执行 | 访存 | 写回
+</code></pre>
+<p><strong>五级经典流水线</strong>：IF（取指）→ ID（译码）→ EX（执行）→ MEM（访存）→ WB（写回）。理想情况下每周期完成一条指令，吞吐量提升约 5 倍（单条指令延迟不变，但<strong>吞吐</strong>大增）。</p>
+<h3 id="流水线冒险-pipeline-hazards">流水线冒险 Pipeline Hazards<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#流水线冒险-pipeline-hazards" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>数据冒险 Data Hazard</strong> — 后一条指令依赖前一条的结果</li>
+<li><strong>控制冒险 Control Hazard</strong> — 分支跳转导致取错指令</li>
+<li><strong>结构冒险 Structural Hazard</strong> — 两条指令抢同一个硬件</li>
+</ol>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span># 数据冒险举例</span></span>
+<span data-line><span>ADD R1, R2, R3    # R1 = R2 + R3</span></span>
+<span data-line><span>SUB R4, R1, R5    # R4 = R1 - R5  ← 依赖上一行的 R1！</span></span>
+<span data-line><span># 如果没有 forwarding，第二条必须等第一条写回</span></span></code></pre></figure>
+<p><strong>解决办法</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>冒险</th><th>解决手段</th><th>代价</th></tr></thead><tbody><tr><td>数据冒险</td><td>转发 Forwarding/Bypassing（EX 阶段结果直接送回 ALU 输入）</td><td>硬件成本，零延迟</td></tr><tr><td>数据冒险（load-use）</td><td>停顿 Stall/Bubble（插入 NOP）</td><td>1~2 个周期</td></tr><tr><td>控制冒险</td><td>分支预测 + 预测错误时 flush</td><td>预测错损失 10~20 个周期</td></tr><tr><td>结构冒险</td><td>指令缓存和数据缓存分离、端口复制</td><td>面积</td></tr></tbody></table></div>
+<p><strong>分支预测</strong>：静态（永远预测不跳）→ 动态（2-bit 饱和计数器，记录上次跳转历史）→ 现代 TAGE 等预测器准确率 > 95%。<strong>预测错误的代价 = 流水线深度 × 周期</strong>，所以深流水线 CPU 特别怕乱序分支。</p>
+<h3 id="分支预测-branch-prediction">分支预测 Branch Prediction<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#分支预测-branch-prediction" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="c" data-theme="github-light github-dark"><code data-language="c" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">// 排序后的数组分支预测命中率高，跑得快！</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">// 乱序数组：每次都猜错，flush 流水线 → 慢 6 倍</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">; i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> N; i</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">++</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">) {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> (</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;" data-token-type="normal">arr</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">[i] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">>=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> 128</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">)</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">   // 分支预测的关键</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        sum </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">+=</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;" data-token-type="normal"> arr</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">[i];</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">}</span></span></code></pre></figure>
+<hr/>
+<h2 id="内存层级-memory-hierarchy">内存层级 Memory Hierarchy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#内存层级-memory-hierarchy" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>        ┌─────────────────┐
+        │    Registers     │  ~1 cycle, ~100s bytes
+        │    ┌─────────┐   │
+        │    │ L1 Cache│   │  ~4 cycles, ~64 KB
+        │    │┌───────┐│   │
+        │    ││L2 Cache│   │  ~12 cycles, ~256 KB
+        │    ││┌──────┐│   │
+        │    │││L3    ││   │  ~40 cycles, ~8 MB
+        │    │││Cache ││   │
+        └────┼┼┼──────┼┼───┘
+             │││      ││
+        ┌────┼┼┼──────┼┼───┐
+        │ Main Memory    │  ~200 cycles, ~16 GB
+        └────────────────┘
+        ┌────────────────────┐
+        │    SSD / Disk       │  ~10⁶ cycles, ~1 TB
+        └────────────────────┘
+</code></pre>
+<p><strong>缓存的核心思想</strong>：时间局部性 &amp; 空间局部性。</p>
+<ul>
+<li><strong>时间局部性 Temporal Locality</strong>：刚访问的数据很可能再被访问</li>
+<li><strong>空间局部性 Spatial Locality</strong>：刚访问的数据附近的数据很可能被访问</li>
+</ul>
+<p>每一层都是上一层的缓存：寄存器是 L1 的缓存，L1 是 L2 的缓存……<strong>「缓存」是计算机里最通用的设计模式</strong>。</p>
+<h3 id="缓存映射方式">缓存映射方式<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#缓存映射方式" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>方式</th><th>描述</th><th>冲突概率</th></tr></thead><tbody><tr><td>直接映射 Direct Mapped</td><td>每个内存块对应唯一缓存行</td><td>高</td></tr><tr><td>全相联 Fully Associative</td><td>可放任意位置</td><td>零（但硬件成本高）</td></tr><tr><td>组相联 Set Associative</td><td>N 路组相联 → 折中方案</td><td>中</td></tr></tbody></table></div>
+<p><strong>地址拆分</strong>（直接映射/组相联）：</p>
+<pre><code>内存地址 = [ Tag | Set Index | Block Offset ]
+</code></pre>
+<ul>
+<li><strong>Block Offset</strong>：块内偏移（块大小 64B → log₂64 = 6 bit）</li>
+<li><strong>Set Index</strong>：决定去哪个组找（组数 S → log₂S bit）</li>
+<li><strong>Tag</strong>：剩下的高位，用来确认组里那一行是不是要找的块</li>
+</ul>
+<p><strong>例题</strong>：64KB 缓存，4 路组相联，块大小 64B，32-bit 地址，问 Tag / Index / Offset 各多少位？</p>
+<p><strong>解题思路</strong>：① 组数 = 缓存大小 ÷ (路数 × 块大小) = 64KB ÷ (4 × 64B) = 256 组；② Offset = log₂64 = 6 bit；③ Index = log₂256 = 8 bit；④ Tag = 32 − 8 − 6 = <strong>18 bit</strong>。</p>
+<p><strong>命中率排序</strong>：全相联 ≥ 组相联 ≥ 直接映射；硬件成本反过来。<strong>替换策略</strong>：LRU（组相联常用）、FIFO、随机。</p>
+<h3 id="cache-friendly-code">Cache-Friendly Code<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cache-friendly-code" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="c" data-theme="github-light github-dark"><code data-language="c" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">// ❌ 坏：按列遍历，每次跨一整行 → cache miss</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> j </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">; j </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> N; j</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">++</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">; i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> N; i</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">++</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        sum </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">+=</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;" data-token-type="normal"> matrix</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">[i][j];</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">// ✅ 好：按行遍历，连续访问 → cache hit</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">; i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> N; i</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">++</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> j </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">; j </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> N; j</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">++</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        sum </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">+=</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;" data-token-type="normal"> matrix</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">[i][j];</span></span></code></pre></figure>
+<hr/>
+<h2 id="性能公式-performance">性能公式 Performance<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#性能公式-performance" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>核心公式（考试必背）</strong>：</p>
+<pre><code>CPU 时间 = 指令数 IC × 每指令周期数 CPI × 时钟周期时间 T
+        = IC × CPI / 时钟频率 f
+</code></pre>
+<p>三个因素的权衡：</p>
+<ul>
+<li><strong>IC</strong>：指令集设计（CISC 指令少但复杂，RISC 指令多但简单）</li>
+<li><strong>CPI</strong>：流水线效率、缓存命中率、分支预测准确率</li>
+<li><strong>T</strong>：工艺（7nm vs 5nm）、时钟频率</li>
+</ul>
+<p><strong>例题</strong>：程序有 2×10⁹ 条指令，平均 CPI = 1.5，时钟频率 3 GHz。</p>
+<ul>
+<li>CPU 时间 = 2×10⁹ × 1.5 / (3×10⁹) = <strong>1.0 秒</strong></li>
+<li>若优化缓存使 CPI 降到 1.2 → 时间 = 2×10⁹ × 1.2 / 3×10⁹ = 0.8 秒（省 20%）</li>
+</ul>
+<p><strong>Amdahl 定律</strong>：</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">加速比</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3651em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">p</span><span class="mclose mtight">)</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">p</span><span class="mord mtight">/</span><span class="mord mathnormal mtight">s</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>p 是可加速部分占比，s 是加速倍数。<strong>p 很小的时候，s 再大也没意义</strong>——先优化占比大的部分。</p>
+<hr/>
+<h2 id="数据表示">数据表示<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#数据表示" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="整数-integer">整数 Integer<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#整数-integer" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>表示</th><th>范围（32-bit）</th></tr></thead><tbody><tr><td>unsigned</td><td>0 ~ 4,294,967,295</td></tr><tr><td>signed（补码）</td><td>-2,147,483,648 ~ 2,147,483,647</td></tr></tbody></table></div>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="c" data-theme="github-light github-dark"><code data-language="c" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">// 经典溢出</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> x </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> 2147483647</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">x </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> x </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> 1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">;</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">  // → -2147483648 (回绕！)</span></span></code></pre></figure>
+<h3 id="浮点数-ieee-754">浮点数 IEEE 754<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#浮点数-ieee-754" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>float (32-bit): [S (1bit)] [Exponent (8bit)] [Mantissa (23bit)]
+</code></pre>
+<p><strong>永远不要用 <code>==</code> 比较浮点数</strong>：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">0.1</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> +</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> 0.2</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> ==</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> 0.3</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">  # False! 0.1+0.2 = 0.30000000000000004</span></span></code></pre></figure>
+<p><strong>精度规则</strong>：float 约 7 位有效数字，double 约 15 位。比较用容差：<code>abs(a - b) &lt; 1e-9</code>。</p>
+<h3 id="补码-twos-complement">补码 Two’s Complement<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#补码-twos-complement" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>负数 = 按位取反 + 1。这样 <code>x + (-x) = 0</code> 自然成立，且只有一种零。加法和减法共用同一个电路，这就是补码被选中的原因。</p>
+<hr/>
+<h2 id="mips-指令示例">MIPS 指令示例<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mips-指令示例" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>MIPS 是经典教学 ISA（RISC）。三种格式：R 型（寄存器运算）、I 型（立即数/访存/分支）、J 型（跳转）。</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span># R 型：add rd, rs, rt  →  rd = rs + rt</span></span>
+<span data-line><span>add  $t0, $t1, $t2      # $t0 = $t1 + $t2</span></span>
+<span data-line><span>sub  $t0, $t1, $t2      # $t0 = $t1 - $t2</span></span>
+<span data-line><span>and  $t0, $t1, $t2      # 按位与</span></span>
+<span data-line><span>sll  $t0, $t1, 2        # 逻辑左移 2 位（乘 4）</span></span>
+<span data-line> </span>
+<span data-line><span># I 型：立即数 / 访存 / 分支</span></span>
+<span data-line><span>addi $t0, $t0, 1        # $t0 = $t0 + 1</span></span>
+<span data-line><span>lw   $t1, 0($t0)        # 从内存读：$t1 = Mem[$t0 + 0]</span></span>
+<span data-line><span>sw   $t1, 4($t0)        # 写内存：Mem[$t0 + 4] = $t1</span></span>
+<span data-line><span>beq  $t0, $t1, loop     # 相等则跳转到 loop</span></span>
+<span data-line><span>bne  $t0, $t1, exit     # 不等则跳转</span></span>
+<span data-line> </span>
+<span data-line><span># J 型</span></span>
+<span data-line><span>j    loop               # 无条件跳转</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span># 完整例子：计算 1+2+...+10，结果在 $t0</span></span>
+<span data-line><span>    li   $t0, 0         # sum = 0</span></span>
+<span data-line><span>    li   $t1, 1         # i = 1</span></span>
+<span data-line><span>loop:</span></span>
+<span data-line><span>    add  $t0, $t0, $t1  # sum += i</span></span>
+<span data-line><span>    addi $t1, $t1, 1    # i++</span></span>
+<span data-line><span>    bne  $t1, 11, loop  # i != 11 则继续</span></span>
+<span data-line><span># 结束时 $t0 = 55</span></span></code></pre></figure>
+<p><strong>对应到流水线</strong>：<code>lw</code> 后面紧跟用它结果的指令（如 <code>add $t2, $t0, $t1</code>）就触发 load-use 冒险，需要停顿 1 周期或编译器重排指令。</p>
+<hr/>
+<h2 id="二级结论速查">二级结论速查<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#二级结论速查" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>理想 CPI = 1</strong>：流水线每周期完成一条指令；冒险和 cache miss 把 CPI 拉高</li>
+<li><strong>缓存命中率 vs 加速</strong>：miss 代价是 100 周期量级，命中率 99% 比 95% 快 4 倍以上</li>
+<li><strong>局部性是一切缓存设计的根基</strong>：时间局部性 → LRU；空间局部性 → 预取、大块</li>
+<li><strong>RISC vs CISC 已合流</strong>：现代 x86 内部翻译成 µops，ARM 也在加复杂指令</li>
+<li><strong>Amdahl 定律</strong>：先优化占比大的部分</li>
+<li><strong>补码</strong>：加减同一电路、只有一种零，所以硬件简单</li>
+</ol>
+<hr/>
+<h2 id="数学连接">数学连接<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#数学连接" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><a href="../布尔代数" class="internal internal-link alias" data-slug="布尔代数">布尔代数</a> — 数字电路、逻辑门的基础</li>
+<li><a href="../线性代数" class="internal internal-link alias" data-slug="线性代数">线性代数</a> — 矩阵乘法是 GPU/TPU 的核心操作，SIMD 的本质</li>
+<li><a href="../mathematics/大学数学/数值分析" class="internal internal-link alias" data-slug="mathematics/大学数学/数值分析">数值分析</a> — 浮点误差分析、数值稳定性</li>
+<li><a href="../模运算" class="internal internal-link alias" data-slug="模运算">模运算</a> — 补码、哈希、校验和</li>
+</ul>
+<hr/>
+<h2 id="常见坑">常见坑<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#常见坑" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>忘记字节序</strong> — Big Endian vs Little Endian，网络字节序是大端</li>
+<li><strong>内存对齐</strong> — <code>struct</code> 有 padding，<code>sizeof(struct)</code> 可能 > 成员之和</li>
+<li><strong>缓存行伪共享 False Sharing</strong> — 多线程写相邻变量，互相 invalidate 缓存行</li>
+<li><strong>分支预测失败代价</strong> — 热路径里尽量避免不可预测的 if</li>
+<li><strong>把 cache 当 RAM 用</strong> — 缓存是硬件自动管理的，你只能写「友好」的代码</li>
+<li><strong>浮点直接 == 比较</strong> — 永远用 epsilon 容差</li>
+</ol>
+<hr/>
+<p><em>「In the long run, the most significant source of improved performance is better algorithms.」— John Hennessy</em></p></div></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc"><button type="button" class="toc-header" aria-controls="toc-40" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-0" class="toc-content overflow"><li class="depth-0"><a href="#计算机体系结构-computer-architecture" data-for="计算机体系结构-computer-architecture">计算机体系结构 Computer Architecture</a></li><li class="depth-1"><a href="#人话讲解" data-for="人话讲解">人话讲解</a></li><li class="depth-1"><a href="#冯诺依曼架构-von-neumann-architecture" data-for="冯诺依曼架构-von-neumann-architecture">冯·诺依曼架构 Von Neumann Architecture</a></li><li class="depth-1"><a href="#cpu-核心概念" data-for="cpu-核心概念">CPU 核心概念</a></li><li class="depth-2"><a href="#指令周期-instruction-cycle" data-for="指令周期-instruction-cycle">指令周期 Instruction Cycle</a></li><li class="depth-2"><a href="#risc-vs-cisc" data-for="risc-vs-cisc">RISC vs CISC</a></li><li class="depth-2"><a href="#流水线-pipelining" data-for="流水线-pipelining">流水线 Pipelining</a></li><li class="depth-2"><a href="#流水线冒险-pipeline-hazards" data-for="流水线冒险-pipeline-hazards">流水线冒险 Pipeline Hazards</a></li><li class="depth-2"><a href="#分支预测-branch-prediction" data-for="分支预测-branch-prediction">分支预测 Branch Prediction</a></li><li class="depth-1"><a href="#内存层级-memory-hierarchy" data-for="内存层级-memory-hierarchy">内存层级 Memory Hierarchy</a></li><li class="depth-2"><a href="#缓存映射方式" data-for="缓存映射方式">缓存映射方式</a></li><li class="depth-2"><a href="#cache-friendly-code" data-for="cache-friendly-code">Cache-Friendly Code</a></li><li class="depth-1"><a href="#性能公式-performance" data-for="性能公式-performance">性能公式 Performance</a></li><li class="depth-1"><a href="#数据表示" data-for="数据表示">数据表示</a></li><li class="depth-2"><a href="#整数-integer" data-for="整数-integer">整数 Integer</a></li><li class="depth-2"><a href="#浮点数-ieee-754" data-for="浮点数-ieee-754">浮点数 IEEE 754</a></li><li class="depth-2"><a href="#补码-twos-complement" data-for="补码-twos-complement">补码 Two’s Complement</a></li><li class="depth-1"><a href="#mips-指令示例" data-for="mips-指令示例">MIPS 指令示例</a></li><li class="depth-1"><a href="#二级结论速查" data-for="二级结论速查">二级结论速查</a></li><li class="depth-1"><a href="#数学连接" data-for="数学连接">数学连接</a></li><li class="depth-1"><a href="#常见坑" data-for="常见坑">常见坑</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>反向链接</h3><ul id="list-0" class="overflow"><li><a href="../cs/devops" class="internal">DevOps</a></li><li><a href="../cs/计算机大脑" class="internal">计算机大脑</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v5.0.0</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li></ul></footer></div></div></body><script src="../static/resource-after-e13fffa1.js" type="application/javascript" data-persist="true"></script><script src="../static/resource-after-8b336f9a.js" type="application/javascript" data-persist="true"></script><script src="../static/resource-after-baba652b.js" type="application/javascript" data-persist="true"></script><script src="../static/resource-after-5eb75950.js" type="module" data-persist="true"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript-9114441b.js" type="module" data-persist="true"></script></html>

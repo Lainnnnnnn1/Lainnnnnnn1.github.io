@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>博弈论</title><meta charset="utf-8"/><link rel="preload" href="../../index-bb6c1746.css" as="style"/><link rel="preload" href="../../prescript-2bfc6315.js" as="script"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="知识库"/><meta property="og:title" content="博弈论"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="博弈论"/><meta name="twitter:description" content="博弈论 博弈论 = 研究「我的决策取决于你的决策，你的决策又取决于我的决策」这种互相依赖的局面。Nash 均衡告诉你，当所有人都没有动机单方面改变策略时，系统就「定」住了。 基本概念 博弈的核心要素 要素含义参与者（Players）做决策的主体策略（Strategies）每个参与者的可选行动收益（Payoffs）每种策略组合下各参与者的得失信息（Information）参与者知道什么 策略分类 类型定义纯策略确定地选择一个行动混合策略以概率分布在多个行动中随机选择占优策略无论别人选什么，这个策略都最优被占优策略存在另一个策略在任何情况下都不比它差，且在有些情况下更好 人话： 纯策略 = 每次都..."/><meta property="og:description" content="博弈论 博弈论 = 研究「我的决策取决于你的决策，你的决策又取决于我的决策」这种互相依赖的局面。Nash 均衡告诉你，当所有人都没有动机单方面改变策略时，系统就「定」住了。 基本概念 博弈的核心要素 要素含义参与者（Players）做决策的主体策略（Strategies）每个参与者的可选行动收益（Payoffs）每种策略组合下各参与者的得失信息（Information）参与者知道什么 策略分类 类型定义纯策略确定地选择一个行动混合策略以概率分布在多个行动中随机选择占优策略无论别人选什么，这个策略都最优被占优策略存在另一个策略在任何情况下都不比它差，且在有些情况下更好 人话： 纯策略 = 每次都..."/><meta property="og:image:alt" content="博弈论 博弈论 = 研究「我的决策取决于你的决策，你的决策又取决于我的决策」这种互相依赖的局面。Nash 均衡告诉你，当所有人都没有动机单方面改变策略时，系统就「定」住了。 基本概念 博弈的核心要素 要素含义参与者（Players）做决策的主体策略（Strategies）每个参与者的可选行动收益（Payoffs）每种策略组合下各参与者的得失信息（Information）参与者知道什么 策略分类 类型定义纯策略确定地选择一个行动混合策略以概率分布在多个行动中随机选择占优策略无论别人选什么，这个策略都最优被占优策略存在另一个策略在任何情况下都不比它差，且在有些情况下更好 人话： 纯策略 = 每次都..."/><meta property="og:image" content="https://Lainnnnnnn1.github.io/static/og-image.png"/><meta property="og:image:url" content="https://Lainnnnnnn1.github.io/static/og-image.png"/><meta name="twitter:image" content="https://Lainnnnnnn1.github.io/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="Lainnnnnnn1.github.io"/><meta property="og:url" content="https://lainnnnnnn1.github.io/mathematics/应用数学/博弈论"/><meta property="twitter:url" content="https://lainnnnnnn1.github.io/mathematics/应用数学/博弈论"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="博弈论 博弈论 = 研究「我的决策取决于你的决策，你的决策又取决于我的决策」这种互相依赖的局面。Nash 均衡告诉你，当所有人都没有动机单方面改变策略时，系统就「定」住了。 基本概念 博弈的核心要素 要素含义参与者（Players）做决策的主体策略（Strategies）每个参与者的可选行动收益（Payoffs）每种策略组合下各参与者的得失信息（Information）参与者知道什么 策略分类 类型定义纯策略确定地选择一个行动混合策略以概率分布在多个行动中随机选择占优策略无论别人选什么，这个策略都最优被占优策略存在另一个策略在任何情况下都不比它差，且在有些情况下更好 人话： 纯策略 = 每次都..."/><meta name="generator" content="Quartz"/><link href="../../index-bb6c1746.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-735924e0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-589c1cea.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-bbc3f7c0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-2911f5d1.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-e427079e.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-53b25b2b.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-c93c6a44.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-8a06014f.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-77d6a441.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-6ee21cee.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-1ea6ad18.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-34bdfded.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-788c9ca3.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-642859cd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-4abc06bd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-274a3dfe.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-94cb6c84.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-58d5ff56.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-7262b5a7.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-a5c806d2.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-6bd36952.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-9857b007.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-d3a1a224.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript-2bfc6315.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted%20Grotesk%3Awght%40400%3B700&amp;family=Source%20Sans%20Pro%3Aital%2Cwght%400%2C400%3B0%2C600%3B1%2C400%3B1%2C600&amp;family=IBM%20Plex%20Mono%3Awght%40400%3B600&amp;display=swap"/></head><body data-slug="mathematics/应用数学/博弈论" data-basepath><div id="quartz-root" class="page" data-frame="default"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">知识库</a></h2><div class="mobile-only"><div class="spacer"></div></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 0.5rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button" aria-label="搜索" aria-expanded="false"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索内容..." placeholder="搜索内容..."/><div class="search-layout" data-preview="true" data-field-priority="[&quot;title&quot;,&quot;content&quot;,&quot;tags&quot;]"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode" aria-label="暗色模式"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode" aria-label="阅读模式"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer nav-files-container" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a2, b2) => {\n    if (!a2.isFolder &amp;&amp; !b2.isFolder || a2.isFolder &amp;&amp; b2.isFolder) {\n      return (a2.displayName || \&quot;\&quot;).localeCompare(b2.displayName || \&quot;\&quot;, void 0, {\n        numeric: true,\n        sensitivity: \&quot;base\&quot;\n      });\n    }\n    if (!a2.isFolder &amp;&amp; b2.isFolder) {\n      return 1;\n    }\n    return -1;\n  }&quot;,&quot;filterFn&quot;:&quot;(node) => node.slugSegment !== \&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;(node) => {\n    return node;\n  }&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-120" aria-label="探索"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-120" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#" class="nav-file-title tree-item-self"></a></li></template><template id="template-folder"><li><div class="folder-container nav-folder-title tree-item-self"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon nav-folder-collapse-indicator collapse-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content tree-item-children"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../mathematics/">Mathematics</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../mathematics/应用数学/">应用数学</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>博弈论</a></div></nav><h1 class="article-title">博弈论</h1><details class="note-properties metadata-container" open data-collapsed="false"><summary class="note-properties-header"><span class="note-properties-title">Properties</span><span class="note-properties-count">2</span></summary><table class="note-properties-table"><tbody><tr class="note-properties-row metadata-property"><td class="note-properties-key metadata-property-key">tags</td><td class="note-properties-value metadata-property-value"><span class="note-properties-tags"><a href="../../tags/数学" class="internal internal-link tag-link">数学</a><span class="note-properties-separator">, </span><a href="../../tags/应用数学" class="internal internal-link tag-link">应用数学</a><span class="note-properties-separator">, </span><a href="../../tags/博弈论" class="internal internal-link tag-link">博弈论</a><span class="note-properties-separator">, </span><a href="../../tags/经济学" class="internal internal-link tag-link">经济学</a><span class="note-properties-separator">, </span><a href="../../tags/策略" class="internal internal-link tag-link">策略</a></span></td></tr><tr class="note-properties-row metadata-property"><td class="note-properties-key metadata-property-key">aliases</td><td class="note-properties-value metadata-property-value"><span class="note-properties-list"><span class="note-properties-text">Game Theory</span></span></td></tr></tbody></table></details><p show-comma="true" class="content-meta"><time datetime="2026-08-03T15:36:52.000Z">2026年8月03日</time><span>15分钟阅读</span></p></div></div><article class="popover-hint"><div class="markdown-preview-view markdown-rendered"><h1 id="博弈论">博弈论<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#博弈论" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p>博弈论 = 研究「我的决策取决于你的决策，你的决策又取决于我的决策」这种互相依赖的局面。Nash 均衡告诉你，当所有人都没有动机单方面改变策略时，系统就「定」住了。</p>
+</blockquote>
+<h2 id="基本概念">基本概念<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基本概念" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="博弈的核心要素">博弈的核心要素<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#博弈的核心要素" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>要素</th><th>含义</th></tr></thead><tbody><tr><td>参与者（Players）</td><td>做决策的主体</td></tr><tr><td>策略（Strategies）</td><td>每个参与者的可选行动</td></tr><tr><td>收益（Payoffs）</td><td>每种策略组合下各参与者的得失</td></tr><tr><td>信息（Information）</td><td>参与者知道什么</td></tr></tbody></table></div>
+<h3 id="策略分类">策略分类<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#策略分类" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>类型</th><th>定义</th></tr></thead><tbody><tr><td>纯策略</td><td>确定地选择一个行动</td></tr><tr><td>混合策略</td><td>以概率分布在多个行动中随机选择</td></tr><tr><td>占优策略</td><td>无论别人选什么，这个策略都最优</td></tr><tr><td>被占优策略</td><td>存在另一个策略在任何情况下都不比它差，且在有些情况下更好</td></tr></tbody></table></div>
+<p><strong>人话：</strong> 纯策略 = 每次都出剪刀。混合策略 = 以 1/3 概率出石头/剪刀/布。</p>
+<h3 id="博弈的类型学">博弈的类型学<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#博弈的类型学" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>分类维度</th><th>类型</th></tr></thead><tbody><tr><td>是否合作</td><td>合作博弈 / 非合作博弈</td></tr><tr><td>信息</td><td>完全信息 / 不完全信息</td></tr><tr><td>顺序</td><td>静态（同时行动）/ 动态（序贯行动）</td></tr><tr><td>收益结构</td><td>零和 / 非零和</td></tr><tr><td>次数</td><td>一次性 / 重复</td></tr></tbody></table></div>
+<p><strong>人话：</strong> 同一局面可以建出完全不同的博弈模型——先看「信息」和「顺序」，再决定用什么工具。</p>
+<h2 id="nash-均衡">Nash 均衡<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#nash-均衡" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="定义">定义<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#定义" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>策略组合 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-2.4519em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2481em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 是 Nash 均衡 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 对每个玩家 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>：</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.067em;vertical-align:-0.317em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-2.4413em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2587em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-2.4413em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">i</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.317em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.067em;vertical-align:-0.317em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-2.4413em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">i</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.317em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:1em;"></span><span class="mord">∀</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p><strong>人话：</strong> Nash 均衡下，没有人可以通过单方面改变策略来获得更高收益。一个人「叛变」只会更惨。</p>
+<h3 id="nash-定理">Nash 定理<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#nash-定理" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>每个有限博弈（有限个参与者和有限个策略）至少存在一个混合策略 Nash 均衡。</p>
+<h3 id="求-nash-均衡的三板斧">求 Nash 均衡的三板斧<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#求-nash-均衡的三板斧" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>方法</th><th>适用</th><th>操作</th></tr></thead><tbody><tr><td>划线法</td><td>纯策略</td><td>对每个对手策略，划出自己收益最高的格子；双方都被划的格子 = 纯策略均衡</td></tr><tr><td>无差异法</td><td>2×2 混合</td><td>让对方在两个纯策略间无差异，解概率方程</td></tr><tr><td>最佳响应函数</td><td>一般</td><td>画双方最佳响应曲线，交点即均衡</td></tr></tbody></table></div>
+<h2 id="零和博弈">零和博弈<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#零和博弈" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="定义-1">定义<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#定义-1" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0497em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.162em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord cjk_fallback">对所有策略组合</span></span></span></span></span></p>
+<p>一人之得即他人之失。</p>
+<h3 id="极小极大定理von-neumann">极小极大定理（von Neumann）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#极小极大定理von-neumann" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>对两人零和博弈（收益矩阵 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>）：</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.4074em;vertical-align:-1.1761em;"></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2313em;"><span style="top:-4.4074em;"><span class="pstrut" style="height:4.4074em;"></span><span class="boxpad"><span class="mord"><span class="mord"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span style="top:-2.4em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">max</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8361em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-2.4em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">q</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">min</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8361em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span></span></span></span></span></span></span></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-2.4em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">q</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">min</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8361em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span style="top:-2.4em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">max</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8361em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span></span></span></span></span></span></span></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span></span></span></span></span><span style="top:-3.2313em;"><span class="pstrut" style="height:4.4074em;"></span><span class="stretchy fbox" style="height:2.4074em;border-style:solid;border-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1761em;"><span></span></span></span></span></span></span></span></span></p>
+<p>这个值 = 博弈的<strong>值</strong> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">v</span></span></span></span>。</p>
+<p><strong>人话：</strong> 先手和后手的价值相等。你选择使最坏情况最好的策略，和对方选择使你最好情况最坏的策略——这两者等价。</p>
+<h3 id="极小极大定理的线性规划形式">极小极大定理的线性规划形式<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#极小极大定理的线性规划形式" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<span class="katex-error" title="ParseError: KaTeX parse error: Expected 'EOF', got '&amp;' at position 19: …x_{p, v} \quad &amp;̲ v \\
+\text{s.t…" style="color:#cc0000;">\max_{p, v} \quad &amp; v \\
+\text{s.t.} \quad &amp; p^T A \geq v \cdot \mathbf{1}^T \\
+&amp; \sum_i p_i = 1, \; p_i \geq 0
+\end{aligned}$$
+
+**人话：** 零和博弈可以直接转化为线性规划求解。运筹学的单纯形法 + 博弈论的均衡 = 一套完整的计算工具。
+
+## 经典博弈
+
+### 囚徒困境
+
+| | 对方合作 | 对方背叛 |
+|---|---|---|
+| **我合作** | (-1, -1) | (-3, 0) |
+| **我背叛** | (0, -3) | (-2, -2) |
+
+占优策略：背叛（两人都选）。
+Nash 均衡：(背叛, 背叛) → (-2, -2)。
+
+**悖论：** 个人理性 → 集体非理性。两人合作 (-1, -1) 比 Nash 均衡 (-2, -2) 好，但没有一方敢先合作。
+
+### 囚徒困境的结构与变形
+
+**结构条件：** $T > R > P > S$
+- $T$ = 背叛对方合作的收益（诱惑）
+- $R$ = 双方合作的收益（回报）
+- $P$ = 双方背叛的收益（惩罚）
+- $S$ = 合作而被背叛的收益（傻瓜）
+
+**公地悲剧（n 人版囚徒困境）：** 每个牧民多养一头牛，好处全归自己、草场成本大家分摊 → 人人都多养 → 草场退化。个人理性 → 集体毁灭。
+
+**重复囚徒困境：** 博弈重复无限次时，「合作」可以成为均衡——只要贴现因子 $\delta$ 足够大，以牙还牙（Tit-for-Tat）就是最优应对：第一轮合作，之后复制对方上一轮的选择。
+
+$$\text{合作可持续} \iff \delta \geq \frac{T - R}{T - P}$$
+
+**人话：** 一次性博弈里背叛是理性的；无限次博弈里「名声」有了价值，合作反而理性。价格战、军备竞赛都是这个逻辑的实例。
+
+### 懦夫博弈（Chicken）
+
+| | 对方让 | 对方冲 |
+|---|---|---|
+| **我让** | (0, 0) | (-1, 1) |
+| **我冲** | (1, -1) | (-10, -10) |
+
+两个不对称纯策略均衡：(我冲, 对方让) 和 (我让, 对方冲)——谁先软谁输。**与鹰鸽博弈数学同构。** 冷战对峙、商业补贴战是典型场景。
+
+### 协调博弈（Battle of Sexes）
+
+| | 对方选 A | 对方选 B |
+|---|---|---|
+| **我选 A** | (3, 2) | (0, 0) |
+| **我选 B** | (0, 0) | (2, 3) |
+
+两个纯策略 Nash 均衡：(A, A) 和 (B, B)。还有一个混合策略均衡。
+
+**混合均衡（无差异法）：** 设我选 A 的概率为 $p$，对方选 A 的概率为 $q$。
+- 对方无差异：$2p + 0(1-p) = 0p + 3(1-p) \Rightarrow p = 3/5$
+- 我无差异：$3q + 0(1-q) = 0q + 2(1-q) \Rightarrow q = 2/5$
+- 混合均衡收益 $= 6/5$——比两个纯策略均衡的收益（3 和 2）都差。**「协调失败」的数学化。**
+
+### 二级结论：常见博弈的 Nash 均衡
+
+| 博弈 | 均衡 |
+|---|---|
+| 囚徒困境 | 纯策略：都背叛 |
+| 石头剪刀布 | 混合：各 1/3 |
+| 鹰鸽博弈 | 混合策略均衡 + 两个纯策略不对称均衡 |
+| 猜硬币 | 混合：各 1/2 |
+| 性别战 | 两个纯策略 + 一个混合（各 3/5, 2/5） |
+| 懦夫博弈 | 两个不对称纯策略 + 一个混合 |
+
+## 混合策略的求解
+
+### 两人两策略
+
+收益矩阵（玩家 1 的收益）：
+
+$$A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}$$
+
+玩家 1 混合策略 $p = (p, 1-p)$，玩家 2 混合策略 $q = (q, 1-q)$。
+
+玩家 1 使玩家 2 无差异：$a p + c(1-p) = b p + d(1-p)$
+
+$$\Rightarrow p^* = \frac{d-c}{a-b-c+d}$$
+
+同理 $q^* = \frac{d-b}{a-b-c+d}$。
+
+**人话：** Nash 均衡的混合概率要恰好让对方在两个纯策略之间「无所谓」。
+
+**为什么必须无差异：** 如果对方严格偏好某个纯策略，他就不会随机化；而若他知道你会固定某个概率，他就能针对性选择。均衡要求双方都无法利用对方。
+
+## 演化博弈论
+
+### 核心思想
+
+策略不是理性选择的，而是通过「适者生存」自然演化出来的——收益 = 适应度。
+
+### 复制动力学（Replicator Dynamics）
+
+$$\dot{x}_i = x_i \left(f_i(\mathbf{x}) - \bar{f}(\mathbf{x})\right)$$
+
+其中 $x_i$ 是策略 $i$ 在种群中的比例，$f_i$ 是其收益，$\bar{f}$ 是平均收益。
+
+**人话：** 收益高于平均的策略，比例增长；反之萎缩。
+
+### 演化稳定策略（ESS）
+
+策略 $s^*$ 是 ESS，若对任何变异策略 $s \neq s^*$：
+
+1. $u(s^*, s^*) \geq u(s, s^*)$（均衡条件）
+2. 若 $u(s^*, s^*) = u(s, s^*)$，则 $u(s^*, s) > u(s, s)$（稳定性条件）
+
+**人话：** 变异者要么在主流群体中表现更差，要么当变异者多起来后互相干不过。
+
+**ESS 与 Nash 的关系：** ESS 一定是 Nash 均衡，但 Nash 均衡不一定是 ESS（如性别战的两个纯策略均衡——一旦出现变异者就瓦解）。ESS = 能抵抗小规模入侵的 Nash 均衡。
+
+## 纳什讨价还价解
+
+两人分 $1$，各自保留效用 $(d_1, d_2)$（谈崩了的收益）：
+
+$$\max (u_1 - d_1)(u_2 - d_2), \quad u_1 + u_2 \leq 1, \; u_i \geq d_i$$
+
+当 $d_1 = d_2 = 0$，解为 $u_1 = u_2 = 1/2$。
+
+**人话：** 讨价还价 = 最大化双方「相对谈崩」的乘积。保留效用越强的人，分得越多。
+
+## 例题
+
+### 例 1：划线法求纯策略均衡
+
+| | 对方 L | 对方 R |
+|---|---|---|
+| **我 U** | (3, 2) | (1, 1) |
+| **我 D** | (0, 0) | (2, 4) |
+
+**解题思路：**
+1. 对方选 L 时：我选 U（3 > 0）→ 划 (U,L)
+2. 对方选 R 时：我选 D（2 > 1）→ 划 (D,R)
+3. 我选 U 时：对方选 L（2 > 1）→ 划 (U,L)
+4. 我选 D 时：对方选 R（4 > 0）→ 划 (D,R)
+5. 两个格子都被划：(U,L) 和 (D,R) 都是纯策略 Nash 均衡
+
+**注意：** 划线法只找纯策略均衡。本例其实还有一个混合均衡——用无差异法继续。
+
+### 例 2：求两人零和博弈的均衡
+
+收益矩阵（玩家 1）：$A = \begin{pmatrix} 3 &amp; 1 \\ 0 &amp; 2 \end{pmatrix}$
+
+**解题思路：**
+1. $p^* = \frac{d-c}{a-b-c+d} = \frac{2-0}{3-1-0+2} = \frac{2}{4} = \frac{1}{2}$
+2. $q^* = \frac{d-b}{a-b-c+d} = \frac{2-1}{3-1-0+2} = \frac{1}{4}$
+3. 博弈值 $v = p^T A q = \frac{1}{2} \cdot \frac{1}{4} \cdot 3 + \frac{1}{2} \cdot \frac{3}{4} \cdot 1 + \frac{1}{2} \cdot \frac{1}{4} \cdot 0 + \frac{1}{2} \cdot \frac{3}{4} \cdot 2 = \frac{3}{8} + \frac{3}{8} + 0 + \frac{3}{4} = \frac{3}{2}$
+
+### 例 3：零和博弈的 LP 化
+
+把例 2 的博弈写成线性规划并求解：
+
+$$\max v, \quad 3p_1 \geq v, \quad p_1 + 2p_2 \geq v, \quad p_1 + p_2 = 1, \quad p \geq 0$$
+
+**解题思路：**
+1. 代入 $p_1 = p_2 = 1/2$：$3/2 \geq v$，$1/2 + 1 = 3/2 \geq v$
+2. 最优 $v = 3/2$——和公式法一致
+3. **为什么：** 两个约束同时取等，说明玩家 2 的两个纯策略都「有用」——玩家 1 的混合策略恰好让它们无差异，这正是均衡条件
+
+### 例 4：猜硬币的混合策略
+
+收益矩阵（玩家 1，双方同面玩家 1 赢 \$1）：
+
+| | 对方正面 | 对方反面 |
+|---|---|---|
+| **我正面** | (1, -1) | (-1, 1) |
+| **我反面** | (-1, 1) | (1, -1) |
+
+**解题思路：**
+1. 无差异：$p - (1-p) = -p + (1-p) \Rightarrow 2p - 1 = 1 - 2p \Rightarrow p = 1/2$
+2. 同理 $q = 1/2$
+3. 博弈值 $v = 0$——长期不输不赢
+4. **关键：** 纯策略下没有均衡（划线法永远只有一边被划）——随机化是唯一出路。点球大战中门将必须「猜方向」就是这个道理
+
+### 例 5：鹰鸽博弈的 ESS 计算
+
+资源价值 $V = 4$，争斗成本 $C = 6$。收益矩阵（鹰 vs 鹰各得 $(V-C)/2 = -1$；鹰 vs 鸽鹰得 $V = 4$；鸽 vs 鸽各得 $V/2 = 2$）：
+
+| | 对方鹰 | 对方鸽 |
+|---|---|---|
+| **我鹰** | (-1, -1) | (4, 0) |
+| **我鸽** | (0, 4) | (2, 2) |
+
+**解题思路（设鹰的比例为 $x$）：**
+1. 鹰的收益：$f_H = -x + 4(1-x) = 4 - 5x$；鸽的收益：$f_D = 2(1-x) = 2 - 2x$
+2. 无差异：$4 - 5x = 2 - 2x \Rightarrow x^* = 2/3$
+3. **ESS 验证：** 对变异策略「全鹰」：$u(x^*, \text{鹰}) = \frac{2}{3}(-1) + \frac{1}{3}(0) = -\frac{2}{3} > u(\text{鹰},\text{鹰}) = -1$ ✓；对「全鸽」：$u(x^*, \text{鸽}) = \frac{2}{3}(4) + \frac{1}{3}(2) = \frac{10}{3} > u(\text{鸽},\text{鸽}) = 2$ ✓
+4. 复制动力学：$\dot{x} = x(f_H - \bar{f}) = x(2 - 5x + 3x^2) = x(3x-2)(x-1)$
+5. 不动点 $x = 0, 2/3, 1$：$x &lt; 2/3$ 时 $\dot{x} > 0$、$x > 2/3$ 时 $\dot{x} &lt; 0$ → $x = 2/3$ **稳定**；$x = 0, 1$ 不稳定
+6. **结论：** 种群中 2/3 鹰、1/3 鸽。一般地 $x^* = V/C$——争斗成本 $C$ 越大，鹰的比例越低（需 $V &lt; C$；若 $V \geq C$ 则全鹰是 ESS）
+
+### 囚徒困境的启示
+
+结构上个人理性导致集体困境的，必须具备：
+- $T > R > P > S$（背叛对方合作的收益 > 合作 > 背叛 > 合作而被背叛）
+- $2R > T + S$（轮流剥削不如持续合作）
+
+**真实世界的囚徒困境：** 军备竞赛、价格战、公共资源的过度使用。
+
+## 知识链接
+
+- **前驱：** [[概率]] — 混合策略的概率基础
+- **前驱：** [[数学期望与方差]] — 收益的计算
+- **后继：** [[优化与凸分析]] — 极小极大定理的凸分析证明
+- **后继：** [[运筹学]] — 零和博弈 → 线性规划
+- **相关：** [[密码学与信息论]] — 不完全信息博弈
+- **相关：** [[金融数学]] — 讨价还价与市场均衡</span></div></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc"><button type="button" class="toc-header" aria-controls="toc-112" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-0" class="toc-content overflow"><li class="depth-0"><a href="#博弈论" data-for="博弈论">博弈论</a></li><li class="depth-1"><a href="#基本概念" data-for="基本概念">基本概念</a></li><li class="depth-2"><a href="#博弈的核心要素" data-for="博弈的核心要素">博弈的核心要素</a></li><li class="depth-2"><a href="#策略分类" data-for="策略分类">策略分类</a></li><li class="depth-2"><a href="#博弈的类型学" data-for="博弈的类型学">博弈的类型学</a></li><li class="depth-1"><a href="#nash-均衡" data-for="nash-均衡">Nash 均衡</a></li><li class="depth-2"><a href="#定义" data-for="定义">定义</a></li><li class="depth-2"><a href="#nash-定理" data-for="nash-定理">Nash 定理</a></li><li class="depth-2"><a href="#求-nash-均衡的三板斧" data-for="求-nash-均衡的三板斧">求 Nash 均衡的三板斧</a></li><li class="depth-1"><a href="#零和博弈" data-for="零和博弈">零和博弈</a></li><li class="depth-2"><a href="#定义-1" data-for="定义-1">定义</a></li><li class="depth-2"><a href="#极小极大定理von-neumann" data-for="极小极大定理von-neumann">极小极大定理（von Neumann）</a></li><li class="depth-2"><a href="#极小极大定理的线性规划形式" data-for="极小极大定理的线性规划形式">极小极大定理的线性规划形式</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>反向链接</h3><ul id="list-0" class="overflow"><li><a href="../../finance/行为金融学" class="internal">行为金融学</a></li><li><a href="../../finance/量化交易" class="internal">量化交易</a></li><li><a href="../../finance/金融量化大脑" class="internal">金融量化大脑</a></li><li><a href="../../mathematics/应用数学/金融数学" class="internal">金融数学</a></li><li><a href="../../mathematics/数学大脑" class="internal">数学大脑</a></li><li><a href="../../mathematics/数学导航" class="internal">数学导航</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v5.0.0</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li></ul></footer></div></div></body><script src="../../static/resource-after-e13fffa1.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-8b336f9a.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-baba652b.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-5eb75950.js" type="module" data-persist="true"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../postscript-9114441b.js" type="module" data-persist="true"></script></html>

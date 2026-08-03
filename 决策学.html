@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>决策学</title><meta charset="utf-8"/><link rel="preload" href="./index-bb6c1746.css" as="style"/><link rel="preload" href="./prescript-2bfc6315.js" as="script"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="知识库"/><meta property="og:title" content="决策学"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="决策学"/><meta name="twitter:description" content="D1 决策数学：二分搜索法 (Binary Search) 深度指南 一、 算法概述 (The Basics) 1.1 什么是二分搜索？ 官方定义：二分搜索（又称折半搜索）是一种在有序列表中查找特定元素的有效算法。 人话讲解：就是“猜数字游戏”的科学版。每次都砍掉剩下的一半，最快速度缩小包围圈。 算法来源：计算机科学中的“分治法”（Divide and Conquer）。它不像线性搜索那样挨个找，而是通过每次排除一半来达到 O(\log n) 的时间复杂度。 1.2 它是用来干什么的？ 用途：在大规模数据（如电话簿、数据库索引）中极速定位信息。 前提条件（考点A）：列表必须是有序的（Sorte..."/><meta property="og:description" content="D1 决策数学：二分搜索法 (Binary Search) 深度指南 一、 算法概述 (The Basics) 1.1 什么是二分搜索？ 官方定义：二分搜索（又称折半搜索）是一种在有序列表中查找特定元素的有效算法。 人话讲解：就是“猜数字游戏”的科学版。每次都砍掉剩下的一半，最快速度缩小包围圈。 算法来源：计算机科学中的“分治法”（Divide and Conquer）。它不像线性搜索那样挨个找，而是通过每次排除一半来达到 O(\log n) 的时间复杂度。 1.2 它是用来干什么的？ 用途：在大规模数据（如电话簿、数据库索引）中极速定位信息。 前提条件（考点A）：列表必须是有序的（Sorte..."/><meta property="og:image:alt" content="D1 决策数学：二分搜索法 (Binary Search) 深度指南 一、 算法概述 (The Basics) 1.1 什么是二分搜索？ 官方定义：二分搜索（又称折半搜索）是一种在有序列表中查找特定元素的有效算法。 人话讲解：就是“猜数字游戏”的科学版。每次都砍掉剩下的一半，最快速度缩小包围圈。 算法来源：计算机科学中的“分治法”（Divide and Conquer）。它不像线性搜索那样挨个找，而是通过每次排除一半来达到 O(\log n) 的时间复杂度。 1.2 它是用来干什么的？ 用途：在大规模数据（如电话簿、数据库索引）中极速定位信息。 前提条件（考点A）：列表必须是有序的（Sorte..."/><meta property="og:image" content="https://Lainnnnnnn1.github.io/static/og-image.png"/><meta property="og:image:url" content="https://Lainnnnnnn1.github.io/static/og-image.png"/><meta name="twitter:image" content="https://Lainnnnnnn1.github.io/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="Lainnnnnnn1.github.io"/><meta property="og:url" content="https://lainnnnnnn1.github.io/决策学"/><meta property="twitter:url" content="https://lainnnnnnn1.github.io/决策学"/><link rel="icon" href="./static/icon.png"/><meta name="description" content="D1 决策数学：二分搜索法 (Binary Search) 深度指南 一、 算法概述 (The Basics) 1.1 什么是二分搜索？ 官方定义：二分搜索（又称折半搜索）是一种在有序列表中查找特定元素的有效算法。 人话讲解：就是“猜数字游戏”的科学版。每次都砍掉剩下的一半，最快速度缩小包围圈。 算法来源：计算机科学中的“分治法”（Divide and Conquer）。它不像线性搜索那样挨个找，而是通过每次排除一半来达到 O(\log n) 的时间复杂度。 1.2 它是用来干什么的？ 用途：在大规模数据（如电话簿、数据库索引）中极速定位信息。 前提条件（考点A）：列表必须是有序的（Sorte..."/><meta name="generator" content="Quartz"/><link href="./index-bb6c1746.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-735924e0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-589c1cea.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-bbc3f7c0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-2911f5d1.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-e427079e.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-53b25b2b.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-c93c6a44.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-8a06014f.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-77d6a441.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-6ee21cee.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-1ea6ad18.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-34bdfded.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-788c9ca3.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-642859cd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-4abc06bd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-274a3dfe.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-94cb6c84.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-58d5ff56.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./component-7262b5a7.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./static/resource-style-a5c806d2.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./static/resource-style-6bd36952.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./static/resource-style-9857b007.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="./static/resource-style-d3a1a224.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="./prescript-2bfc6315.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("./static/contentIndex.json").then(data => data.json())</script><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted%20Grotesk%3Awght%40400%3B700&amp;family=Source%20Sans%20Pro%3Aital%2Cwght%400%2C400%3B0%2C600%3B1%2C400%3B1%2C600&amp;family=IBM%20Plex%20Mono%3Awght%40400%3B600&amp;display=swap"/></head><body data-slug="决策学" data-basepath><div id="quartz-root" class="page" data-frame="default"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href=".">知识库</a></h2><div class="mobile-only"><div class="spacer"></div></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 0.5rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button" aria-label="搜索" aria-expanded="false"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索内容..." placeholder="搜索内容..."/><div class="search-layout" data-preview="true" data-field-priority="[&quot;title&quot;,&quot;content&quot;,&quot;tags&quot;]"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode" aria-label="暗色模式"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode" aria-label="阅读模式"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer nav-files-container" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a2, b2) => {\n    if (!a2.isFolder &amp;&amp; !b2.isFolder || a2.isFolder &amp;&amp; b2.isFolder) {\n      return (a2.displayName || \&quot;\&quot;).localeCompare(b2.displayName || \&quot;\&quot;, void 0, {\n        numeric: true,\n        sensitivity: \&quot;base\&quot;\n      });\n    }\n    if (!a2.isFolder &amp;&amp; b2.isFolder) {\n      return 1;\n    }\n    return -1;\n  }&quot;,&quot;filterFn&quot;:&quot;(node) => node.slugSegment !== \&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;(node) => {\n    return node;\n  }&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-207" aria-label="探索"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-207" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#" class="nav-file-title tree-item-self"></a></li></template><template id="template-folder"><li><div class="folder-container nav-folder-title tree-item-self"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon nav-folder-collapse-indicator collapse-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content tree-item-children"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="./">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>决策学</a></div></nav><h1 class="article-title">决策学</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-13T15:41:00.000Z">2026年6月13日</time><span>27分钟阅读</span></p></div></div><article class="popover-hint"><div class="markdown-preview-view markdown-rendered"><h1 id="d1-决策数学二分搜索法-binary-search-深度指南">D1 决策数学：二分搜索法 (Binary Search) 深度指南<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#d1-决策数学二分搜索法-binary-search-深度指南" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="一-算法概述-the-basics">一、 算法概述 (The Basics)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#一-算法概述-the-basics" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="11-什么是二分搜索">1.1 什么是二分搜索？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#11-什么是二分搜索" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>官方定义</strong>：二分搜索（又称折半搜索）是一种在<strong>有序</strong>列表中查找特定元素的有效算法。</p>
+</li>
+<li>
+<p><strong>人话讲解</strong>：就是“猜数字游戏”的科学版。每次都砍掉剩下的一半，最快速度缩小包围圈。</p>
+</li>
+<li>
+<p><strong>算法来源</strong>：计算机科学中的“分治法”（Divide and Conquer）。它不像线性搜索那样挨个找，而是通过每次排除一半来达到 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> 的时间复杂度。</p>
+</li>
+</ul>
+<h3 id="12-它是用来干什么的">1.2 它是用来干什么的？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#12-它是用来干什么的" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>用途</strong>：在大规模数据（如电话簿、数据库索引）中极速定位信息。</p>
+</li>
+<li>
+<p><strong>前提条件（考点A）</strong>：列表必须是<strong>有序的</strong>（Sorted）。如果乱序，必须先进行排序（如使用 Bubble Sort 或 Quick Sort）。</p>
+</li>
+</ul>
+<h2 id="二-核心公式与计算-mathematics">二、 核心公式与计算 (Mathematics)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#二-核心公式与计算-mathematics" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-确定中位点-pivot-selection">2.1 确定中位点 (Pivot Selection)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-确定中位点-pivot-selection" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>这是 D1 考试中最容易丢分的地方。</p>
+<ul>
+<li>
+<p><strong>计算公式</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Pivot position</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.0077em;">R</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> 或 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.0077em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<ul>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span>：当前有效列表的最左端序号。</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span></span></span></span>：当前有效列表的最右端序号。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>套路逻辑</strong>：</p>
+<ul>
+<li>
+<p>如果结果是整数（奇数个项时）：直接选那个项。</p>
+</li>
+<li>
+<p>如果结果是 <code>.5</code>（偶数个项时）：<strong>必须向上取整或向下取整</strong>，且整道题保持一致。</p>
+</li>
+<li>
+<p><strong>D1 默契</strong>：通常推荐“向上取整”，即 11 项选第 6 项，2 项选第 2 项。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="22-最大搜索次数">2.2 最大搜索次数<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-最大搜索次数" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>对于 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个元素的列表，最多需要的尝试次数为：</p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Max Steps</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mop"><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)⌉</span></span></span></span></p>
+<p><em>(例如：11个项，</em><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">11</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3.45</span></span></span></span><em>，所以最多 4 次就能出结果。)</em></p>
+<h2 id="三-考场操作套路-exam-technique">三、 考场操作套路 (Exam Technique)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#三-考场操作套路-exam-technique" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-满分动作三部曲-identify---compare---discard">3.1 满分动作三部曲 (Identify - Compare - Discard)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-满分动作三部曲-identify---compare---discard" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>每一轮搜索必须在卷子上清晰体现这三个动作：</p>
+<ol>
+<li>
+<p><strong>Identify (定点)</strong>：标出这一轮的 Pivot 是谁（写出单词或序号）。</p>
+</li>
+<li>
+<p><strong>Compare (比对)</strong>：明确写出目标值与 Pivot 的大小关系（例如 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span></span></span></span>）。</p>
+</li>
+<li>
+<p><strong>Discard (排除)</strong>：明确写出哪一段被淘汰了（例如 “Discard 6 to 11”）。</p>
+</li>
+</ol>
+<h3 id="32-流程图人话版">3.2 流程图（人话版）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-流程图人话版" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>
+<p><strong>Start</strong>：列表有序吗？没有就先手动 A-Z 排序。</p>
+</li>
+<li>
+<p><strong>Step 1</strong>：找中点（Pivot）。</p>
+</li>
+<li>
+<p><strong>Step 2</strong>：中点就是目标吗？是就结束；不是就继续。</p>
+</li>
+<li>
+<p><strong>Step 3</strong>：目标在中点左边还是右边？</p>
+</li>
+<li>
+<p><strong>Step 4</strong>：把不可能的那一半划掉。</p>
+</li>
+<li>
+<p><strong>Loop</strong>：对剩下的一半重复 Step 1。</p>
+</li>
+<li>
+<p><strong>End</strong>：如果列表空了还没找着，结论：<strong>Not in the list</strong>。</p>
+</li>
+</ol>
+<h2 id="四-捕捉关键词-keywords--traps">四、 捕捉关键词 (Keywords &amp; Traps)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#四-捕捉关键词-keywords--traps" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>关键词</th><th>官方含义</th><th>考场直觉/暗号</th></tr></thead><tbody><tr><td><strong>”In its current form”</strong></td><td>现在的形式</td><td>暗示列表没排序，不能直接二分。</td></tr><tr><td><strong>“Pivots clear”</strong></td><td>枢纽点清晰</td><td>强制要求：你必须写出 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> 的过程，不能只写结果。</td></tr><tr><td><strong>“Show how…”</strong></td><td>展示如何…</td><td>潜台词：即使没找到，过程也要写全，最后必须给结论。</td></tr><tr><td><strong>“Binary”</strong></td><td>二进制/二分</td><td>意味着每一步都在做“二选一”的决定。</td></tr></tbody></table></div>
+<h2 id="五-易错陷阱-mistake-prevention">五、 易错陷阱 (Mistake Prevention)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#五-易错陷阱-mistake-prevention" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>排序手滑</strong>：排序时漏掉一个词，或者字母表（ABC…）背错。</p>
+<ul>
+<li><em>技巧</em>：排完序查一下总数是不是还是 11 个。</li>
+</ul>
+</li>
+<li>
+<p><strong>范围含糊</strong>：排除时没写清楚序号。</p>
+<ul>
+<li><em>建议</em>：永远用 <code>Discard positions X to Y</code> 这种写法。</li>
+</ul>
+</li>
+<li>
+<p><strong>结论缺失</strong>：没找到目标就直接停笔。</p>
+<ul>
+<li><em>后果</em>：损失最后的 A1 分。必须写：<code>F is not present</code>。</li>
+</ul>
+</li>
+<li>
+<p><strong>Pivot 一致性</strong>：</p>
+<ul>
+<li><em>注意</em>：如果你在列表剩 2 个词时选了右边那个，那么之后所有类似情况都要选右边那个。</li>
+</ul>
+</li>
+</ol>
+<h2 id="六-记忆顺口溜">六、 记忆顺口溜<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#六-记忆顺口溜" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p><strong>二分搜索先排序，</strong> <strong>中点公式要牢记。</strong> <strong>比一比，看左右，</strong> <strong>没用那一半扔垃圾。</strong> <strong>最后不管找没找，</strong> <strong>结论一句不能少</strong></p>
+</blockquote>
+<h1 id="d1-决策数学深度全书dijkstra-算法专题">D1 决策数学深度全书：Dijkstra 算法专题<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#d1-决策数学深度全书dijkstra-算法专题" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="1-算法背景-historical-context">1. 算法背景 (Historical Context)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-算法背景-historical-context" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="11-谁研究的-the-mastermind">1.1 谁研究的？ (The Mastermind)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#11-谁研究的-the-mastermind" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>人物</strong>：<strong>艾兹格·迪科斯彻 (Edsger W. Dijkstra)</strong>，荷兰计算机科学家。</p>
+</li>
+<li>
+<p><strong>人话背景</strong>：1956 年他在咖啡馆陪未婚妻购物时，想向普通人展示计算机的威力。他选了鹿特丹到海牙的最短路径作为例子。</p>
+</li>
+<li>
+<p><strong>地位</strong>：图灵奖获得者。他曾说：“我们必须学会与机器相处，但更重要的是学会如何与我们的大脑相处。”</p>
+</li>
+</ul>
+<h3 id="12-研究出来干嘛的-the-purpose">1.2 研究出来干嘛的？ (The Purpose)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#12-研究出来干嘛的-the-purpose" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>官方术语</strong>：解决<strong>加权图 (Weighted Graph)</strong> 中的<strong>单源最短路径 (Single-source shortest path)</strong> 问题。</p>
+</li>
+<li>
+<p><strong>人话讲解</strong>：从地图上的一个固定点出发，算出到地图上<strong>所有点</strong>的最短路线（不只是到终点，顺便连路上的小镇怎么走最快都算出来了）。</p>
+</li>
+</ul>
+<h2 id="2-算法原理-theoretical-logic">2. 算法原理 (Theoretical Logic)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-算法原理-theoretical-logic" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-核心思想贪心与松弛-greedy--relaxation">2.1 核心思想：贪心与松弛 (Greedy &amp; Relaxation)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-核心思想贪心与松弛-greedy--relaxation" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>贪心策略 (Greedy Strategy)</strong>：每一步都选目前距离起点最近的、还没被标记的点。</p>
+</li>
+<li>
+<p><strong>松弛操作 (Relaxation)</strong>：</p>
+<ul>
+<li>
+<p><strong>官方定义</strong>：若 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="mord mathnormal">e</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mclose">)</span></span></span></span>，则更新 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mclose">)</span></span></span></span>。</p>
+</li>
+<li>
+<p><strong>人话讲解</strong>：<strong>“踢馆逻辑”</strong>。如果我发现经过中间人 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">U</span></span></span></span> 去 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span></span></span></span> 比我之前记录的方法更近，我就把旧的记录划掉，换成更短的。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="22-核心限制不能有负数">2.2 核心限制：不能有负数<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-核心限制不能有负数" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>官方要求</strong>：所有边的权重必须为非负数 (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="mord mathnormal">e</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>)。</p>
+</li>
+<li>
+<p><strong>原因</strong>：Dijkstra 一旦把某个点标为“永久”，就不会再回头看了。如果有负数边，可能会出现“绕远路反而总分更低”的情况，算法会漏掉它。</p>
+</li>
+</ul>
+<h2 id="3-考场满分实操-exam-mastery">3. 考场满分实操 (Exam Mastery)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-考场满分实操-exam-mastery" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-节点三栏方框-the-node-box">3.1 节点三栏方框 (The Node Box)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-节点三栏方框-the-node-box" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>在 D1 卷子上，每个点都有一个框，填写逻辑如下：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>位置</th><th>官方名称</th><th>考场动作 (人话)</th><th>丢分陷阱</th></tr></thead><tbody><tr><td><strong>左上角</strong></td><td>Order of Labelling</td><td><strong>排位序号</strong>。第几个被锁定的。起点标 1。</td><td>漏写序号或跳过数字。</td></tr><tr><td><strong>右上角</strong></td><td>Final Value</td><td><strong>大结局距离</strong>。确定后不可更改。</td><td>抄错下方列表里的最小值。</td></tr><tr><td><strong>下方栏</strong></td><td>Working Values</td><td><strong>排行榜</strong>。记录所有被“踢馆”成功的数值。</td><td><strong>乱序书写</strong>。必须按发现的时间顺序写。</td></tr></tbody></table></div>
+<h3 id="32-必杀流程走一步看一步">3.2 必杀流程：走一步看一步<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-必杀流程走一步看一步" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>
+<p><strong>锁定起点</strong>：Order=1, Final=0。</p>
+</li>
+<li>
+<p><strong>探测邻居</strong>：算一算从当前点去邻居的距离（Final + 边长）。</p>
+</li>
+<li>
+<p><strong>上榜原则</strong>：如果算的数比邻居方框里现有的<strong>小</strong>，写在下方；比现有的<strong>大或相等</strong>，直接无视。</p>
+</li>
+<li>
+<p><strong>选妃原则</strong>：看全图所有还没标序号的点，挑一个下方数值<strong>最小</strong>的，标上序号，晋升为“永久点”。</p>
+</li>
+<li>
+<p><strong>循环</strong>：直到终点被标上序号。</p>
+</li>
+</ol>
+<h2 id="4-深度-qa-troubleshooting">4. 深度 Q&amp;A (Troubleshooting)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-深度-qa-troubleshooting" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="q-为什么-a-点下方有两个数-27-26而-h-点只有一个-25">Q: 为什么 A 点下方有两个数 (27, 26)，而 H 点只有一个 (25)？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#q-为什么-a-点下方有两个数-27-26而-h-点只有一个-25" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>官方解释</strong>：取决于节点被更新的次数。</p>
+</li>
+<li>
+<p><strong>人话解释</strong>：</p>
+<ul>
+<li>
+<p><strong>A 点</strong>先被 D 点探测到了（距离27），后来又被更近的 B 点探测到了（距离26），所以有两次记录。</p>
+</li>
+<li>
+<p><strong>H 点</strong>第一次被 F 探测到就是 25。后面 A、I、G 等点虽然也能到 H，但算出来的数（如 35, 33）都比 25 大，没资格上榜。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="q-怎么反向追溯路径-backtracking">Q: 怎么反向追溯路径 (Backtracking)？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#q-怎么反向追溯路径-backtracking" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>万能公式</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord text"><span class="mord cjk_fallback">后</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord text"><span class="mord cjk_fallback">前</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">边的长度</span></span></span></span></span>。</p>
+</li>
+<li>
+<p><strong>人话操作</strong>：从终点 45 开始，减去连着的边的长度，如果减完正好等于上一个点的右上角数字，说明你找对路了！</p>
+</li>
+</ul>
+<h2 id="5-广度拓展-beyond-the-course">5. 广度拓展 (Beyond the Course)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-广度拓展-beyond-the-course" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="51-a-算法-a-star-algorithm">5.1 A* 算法 (A-Star Algorithm)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#51-a-算法-a-star-algorithm" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>Dijkstra</strong> 是盲目搜索，像洒水一样向四周晕开。</p>
+</li>
+<li>
+<p><strong>A</strong>* 加入了“方向感”。它会预估剩下的距离。在游戏开发（如《魔兽争霸》的小兵寻路）中更常用。</p>
+</li>
+</ul>
+<h3 id="52-复杂度-complexity">5.2 复杂度 (Complexity)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#52-复杂度-complexity" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>如果图里有 1 万个点，Dijkstra 依然很快 (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mclose">)</span></span></span></span>)。它是人类历史上最高效的经典算法之一。</li>
+</ul>
+<h2 id="6-个人-obsidian-记忆卡片">6. 个人 Obsidian 记忆卡片<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-个人-obsidian-记忆卡片" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>考场保命符 </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ol>
+<li>
+<p><strong>下方 Working Values 不能有涂改痕迹</strong>：划掉就行，别涂黑。</p>
+</li>
+<li>
+<p><strong>顺序 (Order) 不能断</strong>：如果标到 7 直接跳到 9，全题作废。</p>
+</li>
+<li>
+<p><strong>最后一句结论</strong>：必须单独写出 <code>Route: ...</code> 和 <code>Distance: ...</code>。</p>
+</li>
+</ol>
+</div>
+</blockquote>
+<h1 id="图论核心算法从七桥问题到现代优化">图论核心算法：从七桥问题到现代优化<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#图论核心算法从七桥问题到现代优化" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="一-算法绰号与用途告别难记的洋名">一、 算法绰号与用途（告别难记的洋名）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#一-算法绰号与用途告别难记的洋名" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>官方名称</th><th>中国绰号</th><th>它是干嘛的？</th><th>核心逻辑</th></tr></thead><tbody><tr><td><strong>Kruskal (克鲁斯卡尔)</strong></td><td><strong>抠门连线法</strong></td><td>用最少的钱把所有点连通，不准绕圈。</td><td><strong>贪心</strong>：只选便宜的，成圈就扔掉。</td></tr><tr><td><strong>Prim (普里姆)</strong></td><td><strong>修路扩张法</strong></td><td>同样是连通所有点，但它是从一个点开始长。</td><td>从已有点向外找最短的“触角”。</td></tr><tr><td><strong>Chinese Postman (邮递员)</strong></td><td><strong>不空跑算法</strong></td><td>走遍每一条路，且总路程最短。</td><td><strong>补齐</strong>：把奇数点变偶数点。</td></tr><tr><td><strong>Eulerian (欧拉)</strong></td><td><strong>一笔画问题</strong></td><td>判断能不能不重复地走完所有路。</td><td><strong>数度数</strong>：看奇数点的个数。</td></tr></tbody></table></div>
+<h2 id="二-核心结论柯尼斯堡七桥问题-一笔画定理">二、 核心结论：柯尼斯堡七桥问题 (一笔画定理)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#二-核心结论柯尼斯堡七桥问题-一笔画定理" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>你觉得像，是因为它们共用同一个祖宗：<strong>欧拉的一笔画定理</strong>。</p>
+<ul>
+<li>
+<p><strong>结论 1（欧拉回路）</strong>：如果没有奇数点，你可以从任何点出发，不重复走完所有边，最后回到起点。（<strong>回原点 A 的基础</strong>）</p>
+</li>
+<li>
+<p><strong>结论 2（欧拉通路）</strong>：如果只有两个奇数点，你可以从其中一个出发，不重复走完所有边，最后到达另一个。（<strong>F 到 J 的基础</strong>）</p>
+</li>
+<li>
+<p><strong>结论 3</strong>：奇数点永远是成对出现的（握手定理）。</p>
+</li>
+</ul>
+<h2 id="三-秒杀全类型题目逻辑">三、 秒杀全类型题目逻辑<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#三-秒杀全类型题目逻辑" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="1-连线类-最小生成树-mst">1. 连线类 (最小生成树 MST)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-连线类-最小生成树-mst" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>场景</strong>：铺电缆、修路连通城市、成本最低。</p>
+</li>
+<li>
+<p><strong>秒杀逻辑</strong>：</p>
+<ol>
+<li>
+<p>把边按权重排队。</p>
+</li>
+<li>
+<p>有强制要求的边（如 BJ），先塞进篮子。</p>
+</li>
+<li>
+<p>按从小到大捡，只要不跟篮子里的边形成“环”就要。</p>
+</li>
+<li>
+<p><strong>收工标志</strong>：捡够了 <code>点数 - 1</code> 条边。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-扫街类-邮递员问题-cpp">2. 扫街类 (邮递员问题 CPP)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-扫街类-邮递员问题-cpp" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>场景</strong>：扫雪车、垃圾车、检查电线、走遍所有街道。</p>
+</li>
+<li>
+<p><strong>秒杀逻辑（三步走）</strong>：</p>
+<ol>
+<li>
+<p><strong>数度数</strong>：标出所有奇数点。</p>
+</li>
+<li>
+<p><strong>定目标</strong>：</p>
+<ul>
+<li>
+<p><strong>回原点</strong>：目标是让所有点变偶数。</p>
+</li>
+<li>
+<p><strong>X 到 Y</strong>：目标是只留 X 和 Y 为奇数，其他全变偶数。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>找配对</strong>：在“不达标”的点之间找最短路径配对，算出额外增加的最小值。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>总长计算</strong>：全图总长 + 额外重复路程。</p>
+</li>
+</ul>
+<h2 id="四-知识点大图谱">四、 知识点大图谱<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#四-知识点大图谱" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="1-节点的度-degree">1. 节点的度 (Degree)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-节点的度-degree" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p>入度和出度之和。在无向图里就是连了多少根线。</p>
+</li>
+<li>
+<p><strong>奇点</strong>：连线数是 1, 3, 5…</p>
+</li>
+<li>
+<p><strong>偶点</strong>：连线数是 2, 4, 6…</p>
+</li>
+</ul>
+<h3 id="2-树与图的区别">2. 树与图的区别<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-树与图的区别" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>图 (Graph)</strong>：怎么连都行，可以绕圈。</p>
+</li>
+<li>
+<p><strong>树 (Tree)</strong>：特殊的图。<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个点必须只有 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 条边，且<strong>绝对没有环</strong>。</p>
+</li>
+</ul>
+<h3 id="3-算法起源">3. 算法起源<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-算法起源" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>Kruskal/Prim</strong>：源于工业革命后的基础设施规划（怎么省钱）。</p>
+</li>
+<li>
+<p><strong>邮递员问题</strong>：1960年由中国数学家<strong>管梅谷</strong>提出（所以国际上叫 Chinese Postman Problem），专门解决扫街、投递的路径优化。</p>
+</li>
+</ul>
+<h2 id="五-考试避坑指南">五、 考试避坑指南<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#五-考试避坑指南" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>写过程</strong>：Kruskal 必须列出所有尝试过的边，并标注 <code>reject</code>（拒绝）的原因（<code>form a cycle</code>）。</p>
+</li>
+<li>
+<p><strong>配对数</strong>：邮递员问题配对时，一定要写出<strong>所有可能的组合</strong>进行比较，不能只写你认为最短的那个，否则会扣步骤分。</p>
+</li>
+<li>
+<p><strong>单位</strong>：别忘了最后的 <code>metres</code>（米）。</p>
+</li>
+</ol>
+<h1 id="d1-排序与装箱全能大一统通关指南">D1 排序与装箱：全能大一统通关指南<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#d1-排序与装箱全能大一统通关指南" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>这份指南将 D1 中最易混淆的“排序”与“装箱”模块彻底拆解。你可以将其视为考试时的“逻辑地图”。</p>
+<h2 id></h2>
+<p>在读题时，看到以下关键词，立刻在脑中切换到对应模式：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>题目关键词 (Key Words)</th><th>锁定算法 (Algorithm)</th><th>核心操作 (Core Logic)</th></tr></thead><tbody><tr><td><strong>Bubble Sort</strong> / <strong>Passes</strong></td><td><strong>冒泡排序</strong></td><td>左右两两对比，大的往右挪，直到撞到更大的或结尾。</td></tr><tr><td><strong>Quick Sort</strong> / <strong>Pivot</strong></td><td><strong>快速排序</strong></td><td>选一个“标杆”，小的站左边，大的站右边。</td></tr><tr><td><strong>Descending Order</strong></td><td><strong>降序排列</strong></td><td>FFD 算法的第一步，绝对不能忘！</td></tr><tr><td><strong>Lower Bound</strong></td><td><strong>下界公式</strong></td><td>计算总和，求出“理论最少需要多少个箱子”。</td></tr><tr><td><strong>First-fit (FF)</strong></td><td><strong>首次适应算法</strong></td><td>按照原始顺序，能塞哪就塞哪，不挑。</td></tr><tr><td><strong>First-fit Decreasing (FFD)</strong></td><td><strong>递减首次适应</strong></td><td>先按从大到小排好，再开始塞。</td></tr></tbody></table></div>
+<h2 id="-1"><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-1" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="1-冒泡排序的推理侦探套路-q4a-类">1. 冒泡排序的“推理侦探”套路 (Q4a 类)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-冒泡排序的推理侦探套路-q4a-类" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>场景</strong>：题目给出一两轮排序结果，让你推断未知数 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 的范围。</p>
+<ul>
+<li>
+<p><strong>套路</strong>：看 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 与它“左右邻居”的关系。</p>
+</li>
+<li>
+<p><strong>公式（人话版）</strong>：</p>
+<ul>
+<li>
+<p>如果 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 没换到右边邻居的后面 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span></span></span></span> 那个邻居。</p>
+</li>
+<li>
+<p>如果左边邻居没换到 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 的后面 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span></span></span></span> 那个左边邻居。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>官方模版</strong>：<code>[数字A] was compared with [数字B] and does not swap.</code> (这句话值 1 分)</p>
+</li>
+</ul>
+<h3 id="2-装箱下界的天花板公式-q4c-类">2. 装箱下界的“天花板”公式 (Q4c 类)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-装箱下界的天花板公式-q4c-类" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>官方公式</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Lower Bound</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2251em;vertical-align:-0.345em;"></span><span class="mopen">⌈</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">Bin Size</span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">Total Sum</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">⌉</span></span></span></span></p>
+</li>
+<li>
+<p><strong>套路（解谜用）</strong>：</p>
+<ul>
+<li>
+<p>如果题目说下界是 5，箱子容量 120，那么：</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord text"><span class="mord cjk_fallback">总和</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">120</span></span></span></span> （否则 4 个箱子就够了）。</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.82em;vertical-align:-0.1367em;"></span><span class="mord text"><span class="mord cjk_fallback">总和</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">120</span></span></span></span> （否则 5 个箱子不够装）。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-ffd-装箱的排队逻辑">3. FFD 装箱的“排队”逻辑<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-ffd-装箱的排队逻辑" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>套路</strong>：必须画出箱子（Bin 1, Bin 2…）的填充过程。</p>
+</li>
+<li>
+<p><strong>注意点</strong>：FFD 必须先写出 <code>Sorted List (Descending)</code>。如果你直接装，这道题 0 分。</p>
+</li>
+</ul>
+<h2 id="-2"><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-2" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="任务找出隐藏的-x">任务：找出隐藏的 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#任务找出隐藏的-x" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="第一步抓上限冒泡推理">第一步：抓上限（冒泡推理）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#第一步抓上限冒泡推理" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>看第二轮结果：<code>... 24 x 32 21 58 ...</code></p>
+<ul>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 的右边站着 58，且没换过去。说明 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 没 58 大。</p>
+</li>
+<li>
+<p><strong>官方话</strong>：<code>x was compared with 58 and did not swap, so x &lt; 58.</code></p>
+</li>
+</ul>
+<h4 id="第二步抓下限下界推理">第二步：抓下限（下界推理）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#第二步抓下限下界推理" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>已知下界是 5，容量 120。</p>
+<ul>
+<li>
+<p>这意味着总和必须比 4 个箱子能装的量（480）还要多一丁点。</p>
+</li>
+<li>
+<p>计算：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">433</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">480</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">47</span></span></span></span>。</p>
+</li>
+</ul>
+<h4 id="第三步定死答案装箱模拟">第三步：定死答案（装箱模拟）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#第三步定死答案装箱模拟" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>已知容量 160，FFD 算法，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 在 2 号箱。</p>
+<ul>
+<li>
+<p>先把大个子装了：Bin 1 装了 73, 61, 24（剩 2 空间）。</p>
+</li>
+<li>
+<p>Bin 2 装了 58, 54。此时剩下 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">160</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">58</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">54</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">48</span></span></span></span>。</p>
+</li>
+<li>
+<p>因为 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 刚好挤进了 2 号箱，所以 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">48</span></span></span></span>。</p>
+</li>
+<li>
+<p><strong>结局</strong>：比 47 大，又不超过 48，那只能是 48。</p>
+</li>
+</ul>
+<h2 id="-3"><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-3" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>分清冒泡和快排</strong>：</p>
+<ul>
+<li>
+<p>冒泡是“慢工出细活”，每次只挪一位。</p>
+</li>
+<li>
+<p>快排是“大刀阔斧”，每次定好一个人的位置，把人群劈成两半。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>分清 FF 和 FFD</strong>：</p>
+<ul>
+<li>
+<p>FF 像超市排队，谁先来谁先装。</p>
+</li>
+<li>
+<p>FFD 像坐飞机排队，VIP（大数字）先上，小个子往后挤。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>计算时的单位</strong>：</p>
+<ul>
+<li>算完下界，如果是 4.1，答案必须写 5（必须向上取整）。</li>
+</ul>
+</li>
+</ol>
+<h2 id="-4"><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-4" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>
+<p><strong>证明排序完成</strong>： <code>The sorting is complete because no swaps occurred in the last pass.</code></p>
+</li>
+<li>
+<p><strong>解释为什么某数是 Pivot (快排)</strong>： <code>It is the only item in its sublist.</code></p>
+</li>
+<li>
+<p><strong>解释 FFD 的优势</strong>： <code>FFD usually uses fewer bins as it prioritizes larger items.</code></p>
+</li>
+</ul>
+<h1 id="d1-综合通关指南排序装箱与线性规划">D1 综合通关指南：排序、装箱与线性规划<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#d1-综合通关指南排序装箱与线性规划" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="-5"><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-5" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>针对你看不懂的“几倍”、“百分比”等条件，请直接背诵以下转换公式。</p>
+<h3 id="1-搞定百分比-percentage-constraints">1. 搞定“百分比” (Percentage Constraints)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-搞定百分比-percentage-constraints" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>题目常说：某物占总数的百分之多少。</p>
+<ul>
+<li>
+<p><strong>人话词汇</strong>：<code>at least 40% of the tables</code> (至少40%)，<code>no more than 30%</code> (不超过30%)。</p>
+</li>
+<li>
+<p><strong>套路</strong>：设总数为 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mclose">)</span></span></span></span>。</p>
+<ul>
+<li>
+<p><strong>至少 40% 是 x</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩾</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.4</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mclose">)</span></span></span></span></p>
+</li>
+<li>
+<p><strong>不超过 30% 是 z</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.3</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mclose">)</span></span></span></span></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>化简技巧</strong>：</p>
+<ol>
+<li>
+<p>拆括号：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.3</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0.3</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.3</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span></span></span></span></p>
+</li>
+<li>
+<p>变量全部移到左边，右边留 0：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">0.3</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0.3</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7811em;vertical-align:-0.1367em;"></span><span class="mord">0.7</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></p>
+</li>
+<li>
+<p>乘以 10 变整数：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">3</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7811em;vertical-align:-0.1367em;"></span><span class="mord">7</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-搞定倍数与比例-ratio--multiples---必杀技">2. 搞定“倍数”与“比例” (Ratio &amp; Multiples) - 必杀技<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-搞定倍数与比例-ratio--multiples---必杀技" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>这里有一个<strong>万能避坑口诀</strong>：<strong>“先找谁更多，谁就住大端”</strong>（也就是大于号开口对着的那一边）。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>英文原句 (English Phrase)</th><th>谁更多？</th><th>数学翻译 (Maths)</th><th>解释 (Explanation)</th></tr></thead><tbody><tr><td><strong>Twice as many x as y</strong></td><td><strong>x 多</strong></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩾</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span></td><td>x 的数量至少是 y 的 2 倍。</td></tr><tr><td><strong>Not more than half as many x as z</strong></td><td><strong>z 多</strong></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span></span></span></span></td><td>x 的数量不超过 z 的一半。</td></tr><tr><td><strong>At least three times as many y as x</strong></td><td><strong>y 多</strong></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8311em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩾</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mord mathnormal">x</span></span></span></span></td><td>y 至少是 x 的 3 倍。</td></tr><tr><td><strong>y is no more than two-thirds of z</strong></td><td><strong>z 多</strong></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8311em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span></span></span></span></td><td>y 不超过 z 的三分之二。</td></tr><tr><td><strong>The ratio of x to y is at least 3:2</strong></td><td><strong>x 多</strong></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1765em;vertical-align:-0.4811em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6954em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">y</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4811em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩾</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td><td>交叉相乘得 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7811em;vertical-align:-0.1367em;"></span><span class="mord">2</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩾</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span>。</td></tr><tr><td><strong>For every 3 of x, there is at least 1 of z</strong></td><td><strong>x 多</strong></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩾</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span></span></span></span></td><td>每 3 个 x 才配 1 个 z，说明 x 多。</td></tr></tbody></table></div>
+<p><strong>记忆雷达：</strong> 如果看到 <code>As many A as B</code>，前面的 <strong>A</strong> 通常就是那个数量多（或要比较）的对象。</p>
+<h3 id="3-搞定和差总数-sum--difference">3. 搞定“和/差/总数” (Sum &amp; Difference)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-搞定和差总数-sum--difference" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>x is at least 5 more than y</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩾</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span> （x 比 y 多了 5 个还要多）。</p>
+</li>
+<li>
+<p><strong>The total of x and y is no more than 100</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8311em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span>。</p>
+</li>
+<li>
+<p><strong>The number of z is at least 1/4 of the total</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩾</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.25</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mclose">)</span></span></span></span>。</p>
+</li>
+</ul>
+<h3 id="4-搞定资源限制-resource-constraints">4. 搞定“资源限制” (Resource Constraints)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-搞定资源限制-resource-constraints" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>特别注意</strong>：时间单位必须统一！</p>
+<ul>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord">4</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> 小时 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">260</span></span></span></span> 分钟。</p>
+</li>
+<li>
+<p><strong>公式</strong>：(单耗1 · x) + (单耗2 · y) + (单耗3 · z) <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mrel amsrm">⩽</span></span></span></span> 总量。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="-6"><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-6" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>(此处保留上一版 Question 5 的详细步骤，作为参考模版)</p>
+<ul>
+<li>
+<p><strong>Objective</strong>: Maximise <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">275</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">425</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">650</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span></span></span></span></p>
+</li>
+<li>
+<p><strong>Constraints</strong>:</p>
+<ol>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">12</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">25</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7811em;vertical-align:-0.1367em;"></span><span class="mord">40</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">600</span></span></span></span> (Wood)</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">26</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">45</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7811em;vertical-align:-0.1367em;"></span><span class="mord">54</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1200</span></span></span></span> (Time)</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7811em;vertical-align:-0.1367em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩾</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> (40% Small)</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩾</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> (x is twice y)</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">3</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7811em;vertical-align:-0.1367em;"></span><span class="mord">7</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> (30% Large)</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8311em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩾</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> (Integer)</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="-7"><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-7" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>英文词汇</th><th>翻译</th><th>数学符号</th></tr></thead><tbody><tr><td><strong>At least</strong></td><td>至少</td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mrel amsrm">⩾</span></span></span></span></td></tr><tr><td><strong>At most / No more than</strong></td><td>不超过</td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mrel amsrm">⩽</span></span></span></span></td></tr><tr><td><strong>Strictly more than</strong></td><td>严格多于</td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">></span></span></span></span> (但 D1 建模通常用 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733em;vertical-align:-0.1367em;"></span><span class="mrel amsrm">⩾</span></span></span></span>)</td></tr><tr><td><strong>Twice / Double</strong></td><td>两倍</td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mord">×</span></span></span></span></td></tr><tr><td><strong>Triple</strong></td><td>三倍</td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mord">×</span></span></span></span></td></tr><tr><td><strong>Half</strong></td><td>一半</td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span></span></span></span> 或 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/2</span></span></span></span></td></tr><tr><td><strong>In proportion to</strong></td><td>按比例</td><td>建立分式方程</td></tr></tbody></table></div>
+<h2 id="-8"><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-8" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>[ ]</strong> 目标函数前面有没有写 <strong>Maximise</strong> 或 <strong>Minimise</strong>？</p>
+</li>
+<li>
+<p><strong>[ ]</strong> 所有不等式是不是都化成了 <strong>Integer coefficients</strong> (没有小数和分数)？</p>
+</li>
+<li>
+<p><strong>[ ]</strong> 是不是所有变量都在左边，右边只有常数或 0？</p>
+</li>
+<li>
+<p><strong>[ ]</strong> 有没有漏掉最底下的 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8311em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">⩾</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>？</p>
+</li>
+<li>
+<p><strong>[ ]</strong> 比例限制有没有写反？(用上面的口诀检查一遍)。</p>
+</li>
+</ol>
+<p>明白，这两个算法虽然都是用来找**最小生成树（MST）**的，但它们的“性格”和“干活方式”完全不同。我用最通俗的人话给你拆解一下：</p>
+<h3 id="1-核心形象对比">1. 核心形象对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-核心形象对比" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>Prim（普里姆）算法：—— “滚雪球”模式</strong></p>
+<ul>
+<li>
+<p><strong>特点：</strong> 它非常稳，必须<strong>连着长</strong>。</p>
+</li>
+<li>
+<p><strong>做法：</strong> 先随便抓一个点当“基地”，然后看所有跟这个基地相连的边里，哪条最短，就把那个点拉进来。现在基地变大了，再看所有跟这个新基地相连的边，再拉一个最短的。</p>
+</li>
+<li>
+<p><strong>人话举例：</strong> 就像修路，你从北京出发，看周围哪个城市离得最近，修过去；然后你手里有了两个城市，再看这两个城市周围哪个没通车的城市最近，再修过去。<strong>路永远是连着的，不会出现孤岛。</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Kruskal（克鲁斯卡尔）算法：—— “大鱼吃小鱼”模式</strong></p>
+<ul>
+<li>
+<p><strong>特点：</strong> 它非常野，<strong>哪儿短选哪儿</strong>。</p>
+</li>
+<li>
+<p><strong>做法：</strong> 把所有的边按长度从短到大排个序。不管点在哪，先选最短的那条边，再选第二短的…… 只要选这条边不会形成“死循环”（环路），就买断它。</p>
+</li>
+<li>
+<p><strong>人话举例：</strong> 就像你是个抠门的包工头，你把全国待修的路按报价排了一遍。哪段最便宜你就先修哪段，哪怕一段在新疆，一段在海南。最后，这些零散的小段路会慢慢连起来，变成一张大网。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h3 id="2-关键区别考点">2. 关键区别（考点）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-关键区别考点" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th><strong>维度</strong></th><th><strong>Prim (滚雪球)</strong></th><th><strong>Kruskal (大鱼吃小鱼)</strong></th></tr></thead><tbody><tr><td><strong>关注点</strong></td><td><strong>关注“点”</strong>。从一个点扩散到所有点。</td><td><strong>关注“边”</strong>。从最短的边开始挑。</td></tr><tr><td><strong>连通性</strong></td><td>过程中，已经选中的部分<strong>永远是连在一起的</strong>。</td><td>过程中，会出现很多<strong>零散的“小团伙”</strong>，最后才合并。</td></tr><tr><td><strong>适用场景</strong></td><td>适合<strong>点少、边多</strong>的图（比如城市网特别密）。</td><td>适合<strong>边少</strong>的稀疏图（比如大沙漠里就几个油田）。</td></tr><tr><td><strong>禁忌</strong></td><td>无需担心环路，因为它每次都挑“外面”的点。</td><td><strong>严禁形成环路</strong>。如果选中的边让几个点打成圈了，就不能要。</td></tr></tbody></table></div>
+<hr/>
+<h3 id="3-这道题为什么用-prim">3. 这道题为什么用 Prim？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-这道题为什么用-prim" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>在做 <strong>TSP（旅行商问题）</strong> 的下界（Lower Bound）计算时，题目通常会指定“从点 B 开始”。</p>
+<ul>
+<li>
+<p><strong>Prim</strong> 能够指定起点，一步步往外扩，步骤非常清晰，适合在考卷上一步步展示给老师看。</p>
+</li>
+<li>
+<p><strong>Kruskal</strong> 虽然也能算出一样的结果，但它跳来跳去的，在展示解题过程（Working）时，不如 Prim 那么整齐划一。</p>
+</li>
+</ul>
+<h3 id="总结">总结<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#总结" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>Prim</strong>：先定起点，抱着团往外长，主打一个“稳”。</p>
+</li>
+<li>
+<p><strong>Kruskal</strong>：全图扫射，先捡便宜的买，主打一个“省”。</p>
+</li>
+</ul>
+<p><strong>在你的这道题里：</strong></p>
+<p>由于 (c) 小题明确要求“从 B 开始”，这其实就是在暗示你用 <strong>Prim</strong> 的逻辑：先看 B 连谁最近（连 C），再看 {B, C} 这个团伙连谁最近（连 D）…… 这样一直滚雪球滚到 7 个点全齐。</p></div></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc"><button type="button" class="toc-header" aria-controls="toc-198" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-0" class="toc-content overflow"><li class="depth-0"><a href="#d1-决策数学二分搜索法-binary-search-深度指南" data-for="d1-决策数学二分搜索法-binary-search-深度指南">D1 决策数学：二分搜索法 (Binary Search) 深度指南</a></li><li class="depth-1"><a href="#一-算法概述-the-basics" data-for="一-算法概述-the-basics">一、 算法概述 (The Basics)</a></li><li class="depth-2"><a href="#11-什么是二分搜索" data-for="11-什么是二分搜索">1.1 什么是二分搜索？</a></li><li class="depth-2"><a href="#12-它是用来干什么的" data-for="12-它是用来干什么的">1.2 它是用来干什么的？</a></li><li class="depth-1"><a href="#二-核心公式与计算-mathematics" data-for="二-核心公式与计算-mathematics">二、 核心公式与计算 (Mathematics)</a></li><li class="depth-2"><a href="#21-确定中位点-pivot-selection" data-for="21-确定中位点-pivot-selection">2.1 确定中位点 (Pivot Selection)</a></li><li class="depth-2"><a href="#22-最大搜索次数" data-for="22-最大搜索次数">2.2 最大搜索次数</a></li><li class="depth-1"><a href="#三-考场操作套路-exam-technique" data-for="三-考场操作套路-exam-technique">三、 考场操作套路 (Exam Technique)</a></li><li class="depth-2"><a href="#31-满分动作三部曲-identify---compare---discard" data-for="31-满分动作三部曲-identify---compare---discard">3.1 满分动作三部曲 (Identify - Compare - Discard)</a></li><li class="depth-2"><a href="#32-流程图人话版" data-for="32-流程图人话版">3.2 流程图（人话版）</a></li><li class="depth-1"><a href="#四-捕捉关键词-keywords--traps" data-for="四-捕捉关键词-keywords--traps">四、 捕捉关键词 (Keywords &amp; Traps)</a></li><li class="depth-1"><a href="#五-易错陷阱-mistake-prevention" data-for="五-易错陷阱-mistake-prevention">五、 易错陷阱 (Mistake Prevention)</a></li><li class="depth-1"><a href="#六-记忆顺口溜" data-for="六-记忆顺口溜">六、 记忆顺口溜</a></li><li class="depth-0"><a href="#d1-决策数学深度全书dijkstra-算法专题" data-for="d1-决策数学深度全书dijkstra-算法专题">D1 决策数学深度全书：Dijkstra 算法专题</a></li><li class="depth-1"><a href="#1-算法背景-historical-context" data-for="1-算法背景-historical-context">1. 算法背景 (Historical Context)</a></li><li class="depth-2"><a href="#11-谁研究的-the-mastermind" data-for="11-谁研究的-the-mastermind">1.1 谁研究的？ (The Mastermind)</a></li><li class="depth-2"><a href="#12-研究出来干嘛的-the-purpose" data-for="12-研究出来干嘛的-the-purpose">1.2 研究出来干嘛的？ (The Purpose)</a></li><li class="depth-1"><a href="#2-算法原理-theoretical-logic" data-for="2-算法原理-theoretical-logic">2. 算法原理 (Theoretical Logic)</a></li><li class="depth-2"><a href="#21-核心思想贪心与松弛-greedy--relaxation" data-for="21-核心思想贪心与松弛-greedy--relaxation">2.1 核心思想：贪心与松弛 (Greedy &amp; Relaxation)</a></li><li class="depth-2"><a href="#22-核心限制不能有负数" data-for="22-核心限制不能有负数">2.2 核心限制：不能有负数</a></li><li class="depth-1"><a href="#3-考场满分实操-exam-mastery" data-for="3-考场满分实操-exam-mastery">3. 考场满分实操 (Exam Mastery)</a></li><li class="depth-2"><a href="#31-节点三栏方框-the-node-box" data-for="31-节点三栏方框-the-node-box">3.1 节点三栏方框 (The Node Box)</a></li><li class="depth-2"><a href="#32-必杀流程走一步看一步" data-for="32-必杀流程走一步看一步">3.2 必杀流程：走一步看一步</a></li><li class="depth-1"><a href="#4-深度-qa-troubleshooting" data-for="4-深度-qa-troubleshooting">4. 深度 Q&amp;A (Troubleshooting)</a></li><li class="depth-2"><a href="#q-为什么-a-点下方有两个数-27-26而-h-点只有一个-25" data-for="q-为什么-a-点下方有两个数-27-26而-h-点只有一个-25">Q: 为什么 A 点下方有两个数 (27, 26)，而 H 点只有一个 (25)？</a></li><li class="depth-2"><a href="#q-怎么反向追溯路径-backtracking" data-for="q-怎么反向追溯路径-backtracking">Q: 怎么反向追溯路径 (Backtracking)？</a></li><li class="depth-1"><a href="#5-广度拓展-beyond-the-course" data-for="5-广度拓展-beyond-the-course">5. 广度拓展 (Beyond the Course)</a></li><li class="depth-2"><a href="#51-a-算法-a-star-algorithm" data-for="51-a-算法-a-star-algorithm">5.1 A* 算法 (A-Star Algorithm)</a></li><li class="depth-2"><a href="#52-复杂度-complexity" data-for="52-复杂度-complexity">5.2 复杂度 (Complexity)</a></li><li class="depth-1"><a href="#6-个人-obsidian-记忆卡片" data-for="6-个人-obsidian-记忆卡片">6. 个人 Obsidian 记忆卡片</a></li><li class="depth-0"><a href="#图论核心算法从七桥问题到现代优化" data-for="图论核心算法从七桥问题到现代优化">图论核心算法：从七桥问题到现代优化</a></li><li class="depth-1"><a href="#一-算法绰号与用途告别难记的洋名" data-for="一-算法绰号与用途告别难记的洋名">一、 算法绰号与用途（告别难记的洋名）</a></li><li class="depth-1"><a href="#二-核心结论柯尼斯堡七桥问题-一笔画定理" data-for="二-核心结论柯尼斯堡七桥问题-一笔画定理">二、 核心结论：柯尼斯堡七桥问题 (一笔画定理)</a></li><li class="depth-1"><a href="#三-秒杀全类型题目逻辑" data-for="三-秒杀全类型题目逻辑">三、 秒杀全类型题目逻辑</a></li><li class="depth-2"><a href="#1-连线类-最小生成树-mst" data-for="1-连线类-最小生成树-mst">1. 连线类 (最小生成树 MST)</a></li><li class="depth-2"><a href="#2-扫街类-邮递员问题-cpp" data-for="2-扫街类-邮递员问题-cpp">2. 扫街类 (邮递员问题 CPP)</a></li><li class="depth-1"><a href="#四-知识点大图谱" data-for="四-知识点大图谱">四、 知识点大图谱</a></li><li class="depth-2"><a href="#1-节点的度-degree" data-for="1-节点的度-degree">1. 节点的度 (Degree)</a></li><li class="depth-2"><a href="#2-树与图的区别" data-for="2-树与图的区别">2. 树与图的区别</a></li><li class="depth-2"><a href="#3-算法起源" data-for="3-算法起源">3. 算法起源</a></li><li class="depth-1"><a href="#五-考试避坑指南" data-for="五-考试避坑指南">五、 考试避坑指南</a></li><li class="depth-0"><a href="#d1-排序与装箱全能大一统通关指南" data-for="d1-排序与装箱全能大一统通关指南">D1 排序与装箱：全能大一统通关指南</a></li><li class="depth-1"><a href="#" data-for></a></li><li class="depth-1"><a href="#-1" data-for="-1"></a></li><li class="depth-2"><a href="#1-冒泡排序的推理侦探套路-q4a-类" data-for="1-冒泡排序的推理侦探套路-q4a-类">1. 冒泡排序的“推理侦探”套路 (Q4a 类)</a></li><li class="depth-2"><a href="#2-装箱下界的天花板公式-q4c-类" data-for="2-装箱下界的天花板公式-q4c-类">2. 装箱下界的“天花板”公式 (Q4c 类)</a></li><li class="depth-2"><a href="#3-ffd-装箱的排队逻辑" data-for="3-ffd-装箱的排队逻辑">3. FFD 装箱的“排队”逻辑</a></li><li class="depth-1"><a href="#-2" data-for="-2"></a></li><li class="depth-2"><a href="#任务找出隐藏的-x" data-for="任务找出隐藏的-x">任务：找出隐藏的 x</a></li><li class="depth-1"><a href="#-3" data-for="-3"></a></li><li class="depth-1"><a href="#-4" data-for="-4"></a></li><li class="depth-0"><a href="#d1-综合通关指南排序装箱与线性规划" data-for="d1-综合通关指南排序装箱与线性规划">D1 综合通关指南：排序、装箱与线性规划</a></li><li class="depth-1"><a href="#-5" data-for="-5"></a></li><li class="depth-2"><a href="#1-搞定百分比-percentage-constraints" data-for="1-搞定百分比-percentage-constraints">1. 搞定“百分比” (Percentage Constraints)</a></li><li class="depth-2"><a href="#2-搞定倍数与比例-ratio--multiples---必杀技" data-for="2-搞定倍数与比例-ratio--multiples---必杀技">2. 搞定“倍数”与“比例” (Ratio &amp; Multiples) - 必杀技</a></li><li class="depth-2"><a href="#3-搞定和差总数-sum--difference" data-for="3-搞定和差总数-sum--difference">3. 搞定“和/差/总数” (Sum &amp; Difference)</a></li><li class="depth-2"><a href="#4-搞定资源限制-resource-constraints" data-for="4-搞定资源限制-resource-constraints">4. 搞定“资源限制” (Resource Constraints)</a></li><li class="depth-1"><a href="#-6" data-for="-6"></a></li><li class="depth-1"><a href="#-7" data-for="-7"></a></li><li class="depth-1"><a href="#-8" data-for="-8"></a></li><li class="depth-2"><a href="#1-核心形象对比" data-for="1-核心形象对比">1. 核心形象对比</a></li><li class="depth-2"><a href="#2-关键区别考点" data-for="2-关键区别考点">2. 关键区别（考点）</a></li><li class="depth-2"><a href="#3-这道题为什么用-prim" data-for="3-这道题为什么用-prim">3. 这道题为什么用 Prim？</a></li><li class="depth-2"><a href="#总结" data-for="总结">总结</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>反向链接</h3><ul id="list-0" class="overflow"><li><a href="./" class="internal">index</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v5.0.0</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li></ul></footer></div></div></body><script src="./static/resource-after-e13fffa1.js" type="application/javascript" data-persist="true"></script><script src="./static/resource-after-8b336f9a.js" type="application/javascript" data-persist="true"></script><script src="./static/resource-after-baba652b.js" type="application/javascript" data-persist="true"></script><script src="./static/resource-after-5eb75950.js" type="module" data-persist="true"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="./postscript-9114441b.js" type="module" data-persist="true"></script></html>

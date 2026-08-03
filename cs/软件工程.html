@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>软件工程</title><meta charset="utf-8"/><link rel="preload" href="../index-bb6c1746.css" as="style"/><link rel="preload" href="../prescript-2bfc6315.js" as="script"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="知识库"/><meta property="og:title" content="软件工程"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="软件工程"/><meta name="twitter:description" content="软件工程 写代码只占 10%。剩下的 90% 是：别人读你的代码、测试、部署、改需求、修 bug。软件工程就是把这 90% 变成方法论。 软件生命周期 从瀑布到敏捷 模型核心思想适用场景致命问题瀑布模型需求→设计→编码→测试→维护，严格串行需求明确、变更少的项目变更成本随阶段指数上升V 模型瀑布的每个开发阶段对应一个测试阶段嵌入式、安全关键系统仍然串行，测试发现的问题太晚螺旋模型每轮迭代先做风险分析大型、高风险项目依赖风险分析能力敏捷短迭代、持续反馈、拥抱变化需求模糊、快速演进的互联网产品对团队自律要求高 核心直觉：变更发现得越晚，修复成本越高。瀑布假设需求不变，敏捷承认需求一定会变。 敏捷的..."/><meta property="og:description" content="软件工程 写代码只占 10%。剩下的 90% 是：别人读你的代码、测试、部署、改需求、修 bug。软件工程就是把这 90% 变成方法论。 软件生命周期 从瀑布到敏捷 模型核心思想适用场景致命问题瀑布模型需求→设计→编码→测试→维护，严格串行需求明确、变更少的项目变更成本随阶段指数上升V 模型瀑布的每个开发阶段对应一个测试阶段嵌入式、安全关键系统仍然串行，测试发现的问题太晚螺旋模型每轮迭代先做风险分析大型、高风险项目依赖风险分析能力敏捷短迭代、持续反馈、拥抱变化需求模糊、快速演进的互联网产品对团队自律要求高 核心直觉：变更发现得越晚，修复成本越高。瀑布假设需求不变，敏捷承认需求一定会变。 敏捷的..."/><meta property="og:image:alt" content="软件工程 写代码只占 10%。剩下的 90% 是：别人读你的代码、测试、部署、改需求、修 bug。软件工程就是把这 90% 变成方法论。 软件生命周期 从瀑布到敏捷 模型核心思想适用场景致命问题瀑布模型需求→设计→编码→测试→维护，严格串行需求明确、变更少的项目变更成本随阶段指数上升V 模型瀑布的每个开发阶段对应一个测试阶段嵌入式、安全关键系统仍然串行，测试发现的问题太晚螺旋模型每轮迭代先做风险分析大型、高风险项目依赖风险分析能力敏捷短迭代、持续反馈、拥抱变化需求模糊、快速演进的互联网产品对团队自律要求高 核心直觉：变更发现得越晚，修复成本越高。瀑布假设需求不变，敏捷承认需求一定会变。 敏捷的..."/><meta property="og:image" content="https://Lainnnnnnn1.github.io/static/og-image.png"/><meta property="og:image:url" content="https://Lainnnnnnn1.github.io/static/og-image.png"/><meta name="twitter:image" content="https://Lainnnnnnn1.github.io/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="Lainnnnnnn1.github.io"/><meta property="og:url" content="https://lainnnnnnn1.github.io/cs/软件工程"/><meta property="twitter:url" content="https://lainnnnnnn1.github.io/cs/软件工程"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="软件工程 写代码只占 10%。剩下的 90% 是：别人读你的代码、测试、部署、改需求、修 bug。软件工程就是把这 90% 变成方法论。 软件生命周期 从瀑布到敏捷 模型核心思想适用场景致命问题瀑布模型需求→设计→编码→测试→维护，严格串行需求明确、变更少的项目变更成本随阶段指数上升V 模型瀑布的每个开发阶段对应一个测试阶段嵌入式、安全关键系统仍然串行，测试发现的问题太晚螺旋模型每轮迭代先做风险分析大型、高风险项目依赖风险分析能力敏捷短迭代、持续反馈、拥抱变化需求模糊、快速演进的互联网产品对团队自律要求高 核心直觉：变更发现得越晚，修复成本越高。瀑布假设需求不变，敏捷承认需求一定会变。 敏捷的..."/><meta name="generator" content="Quartz"/><link href="../index-bb6c1746.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-735924e0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-589c1cea.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-bbc3f7c0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-2911f5d1.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-e427079e.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-53b25b2b.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-c93c6a44.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-8a06014f.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-77d6a441.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-6ee21cee.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-1ea6ad18.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-34bdfded.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-788c9ca3.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-642859cd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-4abc06bd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-274a3dfe.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-94cb6c84.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-58d5ff56.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-7262b5a7.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../static/resource-style-a5c806d2.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../static/resource-style-6bd36952.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../static/resource-style-9857b007.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../static/resource-style-d3a1a224.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript-2bfc6315.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted%20Grotesk%3Awght%40400%3B700&amp;family=Source%20Sans%20Pro%3Aital%2Cwght%400%2C400%3B0%2C600%3B1%2C400%3B1%2C600&amp;family=IBM%20Plex%20Mono%3Awght%40400%3B600&amp;display=swap"/></head><body data-slug="cs/软件工程" data-basepath><div id="quartz-root" class="page" data-frame="default"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">知识库</a></h2><div class="mobile-only"><div class="spacer"></div></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 0.5rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button" aria-label="搜索" aria-expanded="false"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索内容..." placeholder="搜索内容..."/><div class="search-layout" data-preview="true" data-field-priority="[&quot;title&quot;,&quot;content&quot;,&quot;tags&quot;]"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode" aria-label="暗色模式"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode" aria-label="阅读模式"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer nav-files-container" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a2, b2) => {\n    if (!a2.isFolder &amp;&amp; !b2.isFolder || a2.isFolder &amp;&amp; b2.isFolder) {\n      return (a2.displayName || \&quot;\&quot;).localeCompare(b2.displayName || \&quot;\&quot;, void 0, {\n        numeric: true,\n        sensitivity: \&quot;base\&quot;\n      });\n    }\n    if (!a2.isFolder &amp;&amp; b2.isFolder) {\n      return 1;\n    }\n    return -1;\n  }&quot;,&quot;filterFn&quot;:&quot;(node) => node.slugSegment !== \&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;(node) => {\n    return node;\n  }&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-49" aria-label="探索"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-49" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#" class="nav-file-title tree-item-self"></a></li></template><template id="template-folder"><li><div class="folder-container nav-folder-title tree-item-self"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon nav-folder-collapse-indicator collapse-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content tree-item-children"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../cs/">CS</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>软件工程</a></div></nav><h1 class="article-title">软件工程</h1><details class="note-properties metadata-container" open data-collapsed="false"><summary class="note-properties-header"><span class="note-properties-title">Properties</span><span class="note-properties-count">2</span></summary><table class="note-properties-table"><tbody><tr class="note-properties-row metadata-property"><td class="note-properties-key metadata-property-key">tags</td><td class="note-properties-value metadata-property-value"><span class="note-properties-tags"><a href="../tags/cs" class="internal internal-link tag-link">cs</a><span class="note-properties-separator">, </span><a href="../tags/软件工程" class="internal internal-link tag-link">软件工程</a><span class="note-properties-separator">, </span><a href="../tags/设计模式" class="internal internal-link tag-link">设计模式</a><span class="note-properties-separator">, </span><a href="../tags/测试" class="internal internal-link tag-link">测试</a></span></td></tr><tr class="note-properties-row metadata-property"><td class="note-properties-key metadata-property-key">aliases</td><td class="note-properties-value metadata-property-value"><span class="note-properties-list"><span class="note-properties-text">Software Engineering</span><span class="note-properties-separator">, </span><span class="note-properties-text">设计模式</span><span class="note-properties-separator">, </span><span class="note-properties-text">测试金字塔</span></span></td></tr></tbody></table></details><p show-comma="true" class="content-meta"><time datetime="2026-08-02T16:00:00.000Z">2026年8月03日</time><span>10分钟阅读</span></p></div></div><article class="popover-hint"><div class="markdown-preview-view markdown-rendered"><h1 id="软件工程">软件工程<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#软件工程" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>写代码只占 10%。剩下的 90% 是：别人读你的代码、测试、部署、改需求、修 bug。软件工程就是把这 90% 变成方法论。</p>
+<h2 id="软件生命周期">软件生命周期<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#软件生命周期" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="从瀑布到敏捷">从瀑布到敏捷<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#从瀑布到敏捷" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>模型</th><th>核心思想</th><th>适用场景</th><th>致命问题</th></tr></thead><tbody><tr><td>瀑布模型</td><td>需求→设计→编码→测试→维护，严格串行</td><td>需求明确、变更少的项目</td><td>变更成本随阶段指数上升</td></tr><tr><td>V 模型</td><td>瀑布的每个开发阶段对应一个测试阶段</td><td>嵌入式、安全关键系统</td><td>仍然串行，测试发现的问题太晚</td></tr><tr><td>螺旋模型</td><td>每轮迭代先做风险分析</td><td>大型、高风险项目</td><td>依赖风险分析能力</td></tr><tr><td>敏捷</td><td>短迭代、持续反馈、拥抱变化</td><td>需求模糊、快速演进的互联网产品</td><td>对团队自律要求高</td></tr></tbody></table></div>
+<p>核心直觉：<strong>变更发现得越晚，修复成本越高</strong>。瀑布假设需求不变，敏捷承认需求一定会变。</p>
+<h3 id="敏捷的常考元素">敏捷的常考元素<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#敏捷的常考元素" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Scrum</strong>：固定长度迭代（sprint，通常 1–4 周），角色分 Product Owner / Scrum Master / 开发团队</li>
+<li><strong>看板</strong>：任务可视化在列中（待办→进行中→完成），限制在制品数量 WIP</li>
+<li><strong>用户故事</strong>：以用户视角写需求——“作为 &lt;角色>，我想要 &lt;功能>，以便 &lt;价值>”</li>
+</ul>
+<blockquote>
+<p>一句话区分：Scrum 管”节奏”（固定迭代），看板管”流量”（连续拉动，不限迭代）。</p>
+</blockquote>
+<h2 id="设计模式">设计模式<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#设计模式" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>设计模式是<strong>经过验证的解决方案模板</strong>，解决”类与类怎么协作”的重复问题。GoF 的 23 个模式分三类：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>类别</th><th>关心什么</th><th>代表模式</th></tr></thead><tbody><tr><td>创建型</td><td>对象怎么被创建</td><td>单例、工厂</td></tr><tr><td>结构型</td><td>对象怎么组合</td><td>适配器、装饰器</td></tr><tr><td>行为型</td><td>对象之间怎么通信</td><td>观察者、策略、模板方法</td></tr></tbody></table></div>
+<h3 id="单例模式-singleton">单例模式 Singleton<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#单例模式-singleton" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>保证一个类<strong>只有一个实例</strong>，并提供全局访问点。本质是构造私有 + 静态实例。</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="property"> Config</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    _instance </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> None</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    def</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="function"> __new__</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">(cls):</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">        if</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> cls</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">._instance </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">is</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> None</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">:</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">            cls</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">._instance </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="property"> super</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">().</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="function">__new__</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">cls</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">        return</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> cls</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">._instance</span></span></code></pre></figure>
+<p>陷阱：多线程要加锁；单例是隐式全局状态，测试难替换——现代框架开始排斥它。</p>
+<h3 id="工厂模式-factory">工厂模式 Factory<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#工厂模式-factory" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>把”创建哪个对象”的决定从调用方剥离。三个变体抽象程度递增：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>变体</th><th>决策方式</th><th>扩展新类型时</th></tr></thead><tbody><tr><td>简单工厂</td><td>一个函数内部分支返回不同对象</td><td>改工厂函数（违反开闭原则）</td></tr><tr><td>工厂方法</td><td>子类重写创建方法</td><td>加子类即可（符合开闭原则）</td></tr><tr><td>抽象工厂</td><td>创建一整个产品族</td><td>加一整个产品族</td></tr></tbody></table></div>
+<h3 id="观察者模式-observer">观察者模式 Observer<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#观察者模式-observer" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>主题（Subject）维护观察者列表，状态变化时<strong>广播通知</strong>。发布-订阅是它的异步变体。</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="property"> Subject</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">:</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    def</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="function"> __init__</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">(self):</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">        self</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">._observers </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> []</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> attach</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">(self, obs): </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">self</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">._observers.append(obs)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> notify</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">(self, data):</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">        for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> obs </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">in</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> self</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">._observers: obs.update(data)</span></span></code></pre></figure>
+<h3 id="策略模式-strategy">策略模式 Strategy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#策略模式-strategy" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>把”算法”封装成可替换的策略对象，运行时切换。本质是<strong>把 if-else 换成多态</strong>。</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="property"> TaxStrategy</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">:</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> tax</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">(self, amount): </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">raise</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="property"> NotImplementedError</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="property"> VAT</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="property">TaxStrategy</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">):</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> tax</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">(self, amount): </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> amount </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">*</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> 0.13</span></span></code></pre></figure>
+<h3 id="常考模型表需求--模式">常考模型表：需求 → 模式<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#常考模型表需求--模式" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>需求描述</th><th>该用哪个</th></tr></thead><tbody><tr><td>全局唯一配置、日志器</td><td>单例</td></tr><tr><td>不知道具体类，只知道接口</td><td>工厂</td></tr><tr><td>一个对象变化，多个对象要跟着变</td><td>观察者</td></tr><tr><td>同一算法多个变体，运行时切换</td><td>策略</td></tr><tr><td>动态给对象加职责</td><td>装饰器</td></tr><tr><td>封装一组对象的遍历</td><td>迭代器</td></tr></tbody></table></div>
+<h2 id="测试金字塔">测试金字塔<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#测试金字塔" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>单元测试（多、快、便宜）→ 集成测试（适中）→ E2E 测试（少、慢、贵）</strong>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>层级</th><th>测什么</th><th>速度</th><th>数量</th><th>典型工具</th></tr></thead><tbody><tr><td>单元测试</td><td>单个函数/类，隔离依赖</td><td>毫秒级</td><td>最多</td><td>pytest、JUnit</td></tr><tr><td>集成测试</td><td>模块间接口协作、数据库</td><td>秒级</td><td>适中</td><td>pytest + testcontainers</td></tr><tr><td>E2E 测试</td><td>从用户入口走完整流程</td><td>分钟级</td><td>最少</td><td>Playwright、Selenium</td></tr></tbody></table></div>
+<p>金字塔的意义：E2E 又慢又脆，只覆盖关键路径；大部分逻辑靠单元测试兜底。</p>
+<blockquote>
+<p>常见陷阱：E2E 测试比单元测试还多 → 测试套件又慢又脆弱，最终被整体删除。</p>
+</blockquote>
+<h2 id="cicd">CI/CD<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cicd" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>CI（持续集成）</strong>：代码一 push 就自动跑测试，尽早发现集成冲突。
+<strong>CD（持续部署）</strong>：通过测试的代码自动部署到生产。</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># GitHub Actions 最小流水线</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;" data-token-type="tag">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string">CI</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">on</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string">push</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">]</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;" data-token-type="tag">jobs</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;" data-token-type="tag">  test</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">:</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;" data-token-type="tag">    runs-on</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string">ubuntu-latest</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;" data-token-type="tag">    steps</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">      - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;" data-token-type="tag">uses</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string">actions/checkout@v4</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">      - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;" data-token-type="tag">run</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string">pip install -e . &amp;&amp; pytest</span></span></code></pre></figure>
+<p>CI 的隐含要求：<strong>主干保持可部署</strong>。所以小步提交、频繁合并，而不是憋一个大分支。</p>
+<h2 id="代码评审">代码评审<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#代码评审" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>目的不是挑错，是<strong>知识传递 + 质量闸门</strong>。好的评审关注：</p>
+<ol>
+<li>正确性：逻辑是否真的对（边界情况、并发）</li>
+<li>可读性：下一个读代码的人能不能懂</li>
+<li>可测试性：有没有测试覆盖</li>
+<li>性能：复杂度是否失控</li>
+</ol>
+<p>坏评审的标志：只挑风格不挑逻辑；评审积压超过一天；不看就 Approve。</p>
+<h2 id="重构">重构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#重构" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>重构 = <strong>不改变外部行为的前提下改善内部结构</strong>。安全重构的前提是测试存在。</p>
+<ul>
+<li>小步前进：改一点、测一次、提交一次</li>
+<li>坏味道：重复代码、过长函数、过长参数列表、上帝对象</li>
+<li>常用手法：提取函数（Extract Function）、引入变量、用多态取代条件</li>
+</ul>
+<blockquote>
+<p>重构不是重写。重写 = 推倒重来（高风险）；重构 = 步步为营（低风险）。“没坏就别修”是反重构的错误直觉——代码债会复利。</p>
+</blockquote>
+<h2 id="例题">例题<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#例题" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>例 1</strong>：日志模块要求全进程唯一实例，且多线程并发调用。给出实现要点。</p>
+<p>解：单例 + 双重检查锁。第一层判空避免锁竞争，第二层锁内判空保证唯一。Python 可直接在模块顶层创建实例——模块导入天然单例。</p>
+<p><strong>例 2</strong>：电商价格系统支持”原价、会员价、大促价”随时切换，新增价格策略不影响现有代码。选什么模式？</p>
+<p>解：策略模式。定义价格接口 <code>PriceStrategy</code>，每个策略一个类，结算时注入当前策略。新增”双十一价”只需加一个类——符合开闭原则。若需求是”价格变化时多个页面联动刷新”，则应选观察者。</p>
+<p><strong>例 3</strong>：某测试套件 80% 是 E2E 测试，跑一次 40 分钟，每次改动全量回归。问题在哪？</p>
+<p>解：金字塔倒置。E2E 应该最少；核心逻辑下沉为单元测试，E2E 只保留关键用户路径。40 分钟全量回归让开发等不及 → 跳过测试 → 质量恶化，恶性循环。</p>
+<h2 id="二级结论">二级结论<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#二级结论" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>变更成本随发现时间<strong>指数增长</strong>——这是瀑布与敏捷之争的全部经济学。</li>
+<li>设计模式是”接口多态”的复用，不是代码复制；过度设计比没有设计更常见。</li>
+<li>单例 + 全局可变状态 = 隐式耦合，测试噩梦。</li>
+<li>开闭原则（对扩展开放、对修改关闭）是工厂、策略、观察者的共同目标。</li>
+<li>测试金字塔倒置是项目腐烂的早期信号。</li>
+<li>CI 的价值在”尽早失败”，不在”从不失败”。</li>
+<li>重构的前提是测试；没有测试的重构是裸奔。</li>
+<li>代码评审的质量 > 数量，阻塞式评审比没有评审更糟。</li>
+</ol>
+<h2 id="知识链接">知识链接<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#知识链接" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><a href="../cs/操作系统" class="internal internal-link alias" data-slug="cs/操作系统">操作系统</a> — 进程、线程、锁，理解并发 bug 的地基</li>
+<li><a href="../cs/devops" class="internal internal-link alias" data-slug="cs/devops">DevOps</a> — Git、Docker、CI/CD 的具体工具链</li>
+<li><a href="../cs/算法与数据结构" class="internal internal-link alias" data-slug="cs/算法与数据结构">算法与数据结构</a> — 复杂度分析是评审和重构的判断依据</li>
+<li><a href="../cs/分布式系统" class="internal internal-link alias" data-slug="cs/分布式系统">分布式系统</a> — 单机软件工程方法在分布式下的失效与变形</li>
+</ul></div></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc"><button type="button" class="toc-header" aria-controls="toc-44" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-0" class="toc-content overflow"><li class="depth-0"><a href="#软件工程" data-for="软件工程">软件工程</a></li><li class="depth-1"><a href="#软件生命周期" data-for="软件生命周期">软件生命周期</a></li><li class="depth-2"><a href="#从瀑布到敏捷" data-for="从瀑布到敏捷">从瀑布到敏捷</a></li><li class="depth-2"><a href="#敏捷的常考元素" data-for="敏捷的常考元素">敏捷的常考元素</a></li><li class="depth-1"><a href="#设计模式" data-for="设计模式">设计模式</a></li><li class="depth-2"><a href="#单例模式-singleton" data-for="单例模式-singleton">单例模式 Singleton</a></li><li class="depth-2"><a href="#工厂模式-factory" data-for="工厂模式-factory">工厂模式 Factory</a></li><li class="depth-2"><a href="#观察者模式-observer" data-for="观察者模式-observer">观察者模式 Observer</a></li><li class="depth-2"><a href="#策略模式-strategy" data-for="策略模式-strategy">策略模式 Strategy</a></li><li class="depth-2"><a href="#常考模型表需求--模式" data-for="常考模型表需求--模式">常考模型表：需求 → 模式</a></li><li class="depth-1"><a href="#测试金字塔" data-for="测试金字塔">测试金字塔</a></li><li class="depth-1"><a href="#cicd" data-for="cicd">CI/CD</a></li><li class="depth-1"><a href="#代码评审" data-for="代码评审">代码评审</a></li><li class="depth-1"><a href="#重构" data-for="重构">重构</a></li><li class="depth-1"><a href="#例题" data-for="例题">例题</a></li><li class="depth-1"><a href="#二级结论" data-for="二级结论">二级结论</a></li><li class="depth-1"><a href="#知识链接" data-for="知识链接">知识链接</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v5.0.0</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li></ul></footer></div></div></body><script src="../static/resource-after-e13fffa1.js" type="application/javascript" data-persist="true"></script><script src="../static/resource-after-8b336f9a.js" type="application/javascript" data-persist="true"></script><script src="../static/resource-after-baba652b.js" type="application/javascript" data-persist="true"></script><script src="../static/resource-after-5eb75950.js" type="module" data-persist="true"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript-9114441b.js" type="module" data-persist="true"></script></html>
